@@ -6,14 +6,20 @@
     "build": "tsc --outDir lib/",
     "typecheck": "tsc --noEmit -p .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^13.11.1",
+    "eslint": "^6.8.0",
+    "eslint-config-kodefox": "^0.2.2",
     "prettier": "^2.0.4",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "extends": "kodefox"
   },
   "prettier": {
     "singleQuote": true,
