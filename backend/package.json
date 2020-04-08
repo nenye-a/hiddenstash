@@ -1,7 +1,16 @@
 {
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "yarn build && node lib/index.js",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/index.ts",
+    "build": "tsc --outDir lib/",
+    "typecheck": "tsc --noEmit -p ."
+  },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  },
   "private": true
 }
