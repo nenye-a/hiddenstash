@@ -1,19 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import routes, { RouteType } from './routes'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Router basename={process.env.REACT_BASE_NAME || ''}>
+      <Switch>
+        <>
+          {routes.map((route: RouteType, index) => {
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={(props: RouteType) => {
+                  let Layout = route.layout;
+                  let Component = route.component;
+                  return (
+                    <Layout {...props}>
+                      <Component {...props} />
+                    </Layout>
+                  );
+                }} />
+            )
+          })}
+        </>
+      </Switch>
+    </Router>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
