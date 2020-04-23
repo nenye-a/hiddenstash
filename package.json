@@ -1,9 +1,9 @@
 {
   "name": "hiddenstash",
   "scripts": {
-    "dev": "concurrently --kill-others \"yarn --cwd backend dev\" \"yarn --cwd admin start\"",
-    "test": "yarn --cwd backend test && yarn --cwd admin test",
-    "postinstall": "yarn --cwd backend install && yarn --cwd admin install"
+    "dev": "concurrently --kill-others \"yarn --cwd backend dev\" \"yarn --cwd admin start\" \"yarn --cwd extension start:dev\"",
+    "test": "yarn --cwd backend test && yarn --cwd admin test && yarn --cwd extension test",
+    "postinstall": "yarn --cwd backend install && yarn --cwd admin install && yarn --cwd extension install"
   },
   "dependencies": {},
   "devDependencies": {
