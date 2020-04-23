@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["esnext"],
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "downlevelIteration": true,

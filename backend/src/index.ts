@@ -1,12 +1,19 @@
-import * as http from 'http';
+import express from 'express';
+
+import prisma from './prisma';
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+const server = express();
+
+server.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+server.get('/users', async (req, res) => {
+  let users = await prisma.user.findMany();
+  res.send({ users });
 });
 
 server.listen(port, hostname, () => {
