@@ -8,10 +8,12 @@ if (
 }
 
 function main() {
+  // TODO: move to other function
   let addToCartButtonContainer = document.querySelector(
     '#addToCart_feature_div',
   );
   if (addToCartButtonContainer) {
+    // TODO: add styling
     let button = document.createElement('button');
     button.appendChild(document.createTextNode('Click Me'));
     button.addEventListener('click', (event) => {
@@ -20,12 +22,16 @@ function main() {
     });
     // This entire next section is for inserting something after an existing element 😱
     if (addToCartButtonContainer.nextSibling) {
-      addToCartButtonContainer.parentNode.insertBefore(
-        button,
-        addToCartButtonContainer.nextSibling,
-      );
+      if (addToCartButtonContainer.parentNode) {
+        addToCartButtonContainer.parentNode.insertBefore(
+          button,
+          addToCartButtonContainer.nextSibling,
+        );
+      }
     } else {
-      addToCartButtonContainer.parentNode.appendChild(button);
+      if (addToCartButtonContainer.parentNode) {
+        addToCartButtonContainer.parentNode.appendChild(button);
+      }
     }
   }
 }
