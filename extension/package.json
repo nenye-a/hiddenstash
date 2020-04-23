@@ -2,10 +2,11 @@
   "name": "hiddenstash-extension",
   "version": "1.0.0",
   "scripts": {
-    "start:dev": "webpack --config webpack/webpack.dev.js --watch",
+    "dev": "webpack --config webpack/webpack.dev.js --watch",
     "build": "webpack --config webpack/webpack.prod.js",
     "test": "jest --coverage --passWithNoTests"
   },
+  "dependencies": {},
   "devDependencies": {
     "@types/chrome": "0.0.100",
     "copy-webpack-plugin": "^5.1.1",
@@ -18,9 +19,9 @@
     "webpack-merge": "~4.2.2"
   },
   "prettier": {
-    "bracketSpacing": true,
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always"
-  }
+  },
+  "private": true
 }
