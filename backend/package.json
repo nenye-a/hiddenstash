@@ -1,0 +1,35 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn build && node lib/index.js",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/index.ts",
+    "build": "tsc --outDir lib/",
+    "typecheck": "tsc --noEmit -p .",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.1",
+    "eslint": "^6.8.0",
+    "eslint-config-kodefox": "^0.2.2",
+    "jest": "^25.3.0",
+    "prettier": "^2.0.4",
+    "ts-jest": "^25.3.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "extends": "kodefox"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
+  "private": true
+}
