@@ -11,6 +11,10 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["js/contentScript.js"]
+    },
+    {
+      "matches": ["http://*.amazon.com/*", "https://*.amazon.com/*"],
+      "js": ["js/amazonContentScript.js"]
     }
   ],
   "permissions": ["storage", "<all_urls>"]
