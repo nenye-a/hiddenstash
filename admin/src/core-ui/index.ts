@@ -7,3 +7,4 @@ export { default as RadioButton } from './RadioButton';
 export { default as TouchableOpacity } from './TouchableOpacity';
 export { default as Card } from './Card';
 export { default as Form } from './Form';
+export { default as Label } from './Label';

@@ -38,14 +38,14 @@ export default function HeaderNavigationBar() {
         </HeaderItem>
         <HeaderItem
           onPress={() => {
-            history.push('/profile');
+            history.push('/billing');
           }}
         >
           <Text color="white"> Billing </Text>
         </HeaderItem>
         <HeaderItem
           onPress={() => {
-            history.push('/profile');
+            history.push('/orders');
           }}
         >
           <Text color="white"> Orders </Text>

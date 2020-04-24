@@ -12,6 +12,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Signup from './views/Signup';
 import Address from './views/Address';
+import Billing from './views/Billing';
 
 export type RouteType = {
   path: string;
@@ -49,12 +50,14 @@ const COMMON_ROUTES = [
     layout: MinimalLayout,
     component: Address,
   },
+  {
+    path: '/billing',
+    layout: BasicLayout,
+    component: Billing
+  },
   // Routes for future pages, please ensure that these all have layouts and components added.
   // {
   //   path: '/orders',
-  // },
-  // {
-  //   path: '/billing',
   // },
 ];
 
