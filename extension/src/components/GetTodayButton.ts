@@ -1,17 +1,17 @@
-import hiddenstashIcon from '../../assets/hiddenstash-icon.png';
 import { THEME_COLOR, BORDER_COLOR } from '../constants/colors';
 
 type Props = {
   mode?: 'small' | 'default';
   style?: { [key: string]: string | number }; // TODO: refine type
   onClick?: () => void;
+  showIcon?: boolean;
 };
 
 export default function renderGetTodayButton(props: Props) {
-  let { mode = 'default', style, onClick } = props;
+  let { mode = 'default', style, onClick, showIcon = true } = props;
   let button = document.createElement('button');
 
-  let textContainer = document.createElement('div');
+  let textContainer = document.createElement('span');
 
   // TODO: change font family
   Object.assign(textContainer.style, {
@@ -31,18 +31,26 @@ export default function renderGetTodayButton(props: Props) {
   let textNode = document.createTextNode('Get Today');
 
   textContainer.appendChild(textNode);
-  let icon = document.createElement('img');
-  icon.setAttribute('src', hiddenstashIcon);
-  Object.assign(icon.style, {
-    'object-fit': 'contain',
-    ...(mode === 'small'
-      ? {
-          height: '10px',
-          width: '10px',
-        }
-      : { height: '20px', width: '20px' }),
-  });
-  button.appendChild(icon);
+
+  if (showIcon) {
+    let icon = document.createElement('img');
+    // TODO: fix show icon or easy fix just host it somewhere
+    let imgUrl = chrome.extension.getURL(
+      '../../assets/hiddenstash-small-icon.png',
+    );
+    icon.setAttribute('src', imgUrl);
+    Object.assign(icon.style, {
+      'object-fit': 'contain',
+      ...(mode === 'small'
+        ? {
+            height: '10px',
+            width: '10px',
+          }
+        : { height: '20px', width: '20px' }),
+    });
+    button.appendChild(icon);
+  }
+
   button.appendChild(textContainer);
   Object.assign(button.style, {
     display: 'flex',

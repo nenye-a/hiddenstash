@@ -24,15 +24,20 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+
+        use: {
+          loader: 'file-loader',
+          query: {
+            name: '[name].[ext]',
+            outputPath: './assets/',
+          },
+        },
+        include: [path.join(__dirname, '../assets')],
       },
     ],
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
-  plugins: [
-    new CopyPlugin([{ from: '.', to: '../' }], { context: 'public' }),
-    new CopyPlugin([{ from: '.', to: '../' }], { context: 'assets' }),
-  ],
+  plugins: [new CopyPlugin([{ from: '.', to: '../' }], { context: 'public' })],
 };

@@ -17,5 +17,6 @@
       "js": ["js/amazonContentScript.js"]
     }
   ],
-  "permissions": ["storage", "<all_urls>"]
+  "permissions": ["storage", "<all_urls>"],
+  "web_accessible_resources": ["assets/*.png"]
 }
