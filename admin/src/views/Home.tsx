@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { View } from '../core-ui';
+import { View, Text, Card, RadioButton } from '../core-ui';
 // import { useHistory } from 'react-router-dom';
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <Container>
-      Home
+      <Text>Home</Text>
     </Container>
   );
 }

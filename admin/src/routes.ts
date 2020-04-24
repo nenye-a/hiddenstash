@@ -1,5 +1,10 @@
 import { FC } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 
 import { BasicLayout, BlankLayout } from './layouts';
 import Profile from './views/Profile';
@@ -12,19 +17,19 @@ export type RouteType = {
   layout: FC<any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: FC<any>;
-}
+};
 
 const COMMON_ROUTES = [
   {
     path: '/',
     exact: true,
     layout: BlankLayout,
-    component: Home
+    component: Home,
   },
   {
     path: '/profile',
     layout: BasicLayout,
-    component: Profile
+    component: Profile,
   },
   // Routes for future pages, please ensure that these all have layouts and components added.
   // {

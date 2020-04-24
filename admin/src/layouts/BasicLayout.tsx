@@ -12,10 +12,5 @@ const Container = styled(View)`
 `;
 
 export default function BasicLayout(props: Props) {
-
-  return (
-    <Container>
-      {props.children}
-    </Container>
-  );
+  return <Container>{props.children}</Container>;
 }

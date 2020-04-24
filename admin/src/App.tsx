@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import routes, { RouteType } from './routes'
+import routes, { RouteType } from './routes';
 
 export default function App() {
   return (
@@ -22,8 +22,9 @@ export default function App() {
                       <Component {...props} />
                     </Layout>
                   );
-                }} />
-            )
+                }}
+              />
+            );
           })}
         </>
       </Switch>

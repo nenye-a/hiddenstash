@@ -7,11 +7,7 @@ import { View } from '../core-ui';
 export default function Profile() {
   // let history = useHistory();
 
-  return (
-    <Container>
-      Profile Page
-    </Container>
-  );
+  return <Container>Profile Page</Container>;
 }
 
 const Container = styled(View)`
