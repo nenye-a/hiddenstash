@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export default function HeaderNavigationBar() {
           history.push('/profile'); // TODO: make this go to profile by default
         }}
       >
-        <Text color='white'> INSEMBLE </Text>
+        <Text color='white'> HIDDENSTASH </Text>
         {/* TODO: The above to be replaced with reall logo later */}
         {/* <InsembleLogo color="purple" /> */}
       </TouchableOpacity>

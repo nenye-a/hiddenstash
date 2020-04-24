@@ -9,6 +9,7 @@ import {
 import { BasicLayout, BlankLayout } from './layouts';
 import Profile from './views/Profile';
 import Home from './views/Home';
+import Login from './views/Login';
 
 export type RouteType = {
   path: string;
@@ -31,6 +32,11 @@ const COMMON_ROUTES = [
     layout: BasicLayout,
     component: Profile,
   },
+  {
+    path: '/login',
+    layout: BasicLayout,
+    component: Login
+  },
   // Routes for future pages, please ensure that these all have layouts and components added.
   // {
   //   path: '/orders',
@@ -38,9 +44,7 @@ const COMMON_ROUTES = [
   // {
   //   path: '/billing',
   // },
-  // {
-  //   path: '/login',
-  // },
+
   // {
   //   path: '/signup',
   // },

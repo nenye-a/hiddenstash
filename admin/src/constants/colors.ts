@@ -2,8 +2,10 @@ export const STASH_ORANGE = '#FFA525';
 export const SOFT_RED = '#FF9595';
 export const POSITVE_GREEN = '#5E9D5E';
 export const LIGHTEST_GRAY = '#FBFBFB';
-export const LIGHT_GRAY = '#CBCBCB';
-export const SLIGHT_GRAY = '#B7B7B7'; // slightly more colorful than LIGHT_GRAY
+export const GRAY = '#CBCBCB';
+export const LIGHTER_GRAY = '#F1F1F1';
+export const LIGHT_GRAY = '#C5C5C5';
+export const SLIGHT_GRAY = '#B7B7B7'; // slightly more darker than LIGHT_GRAY
 export const DARK_GRAY = '#4A4A4A';
 export const RED = '#FF0000';
 
