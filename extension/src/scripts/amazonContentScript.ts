@@ -1,4 +1,4 @@
-import renderGetTodayButton from './components/GetTodayButton';
+import renderGetTodayButton from '../components/GetTodayButton';
 
 let addToCartButtonContainer = document.querySelector('#addToCart_feature_div');
 let searchResultContainer = document.querySelectorAll(
