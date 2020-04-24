@@ -2,10 +2,13 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start --web-only",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "typecheck": "tsc --noEmit -p .",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
+    "jest": "jest --coverage --passWithNoTests",
+    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest",
+    "build": "expo build:web"
   },
   "dependencies": {
     "expo": "~37.0.3",
@@ -17,10 +20,28 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "@types/jest": "^25.2.1",
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
+    "@types/react-test-renderer": "^16.9.2",
     "babel-preset-expo": "~8.1.0",
-    "typescript": "~3.8.3"
+    "eslint": "^6.8.0",
+    "eslint-config-kodefox": "^0.2.2",
+    "jest": "^25.3.0",
+    "jest-expo": "^37.0.0",
+    "prettier": "^2.0.4",
+    "react-native-testing-library": "^1.13.0",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "extends": "kodefox/react-native"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
   },
   "private": true
 }
