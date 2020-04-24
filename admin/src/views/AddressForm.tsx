@@ -4,25 +4,19 @@ import styled from 'styled-components';
 
 import { View, Form, TextInput, Button } from '../core-ui';
 
-export default function LoginForm() {
+export default function AddressForm() {
   let textInputContainerStyle = { paddingTop: 6, paddingBottom: 6 }
 
   return (
     <Container>
       <Form>
         <TextInput
-          name="email"
-          label="Email"
-          placeholder="Enter your Email"
+          name="address"
+          label="Address"
+          placeholder="Enter your address"
           containerStyle={textInputContainerStyle}
         />
-        <TextInput
-          name="password"
-          placeholder="Enter your password"
-          label="Password"
-          containerStyle={textInputContainerStyle}
-        />
-        <SubmitButton text="Submit" type="submit" />
+        <SubmitButton text="Continue" type="submit" />
       </Form>
     </Container>
   )

@@ -6,10 +6,12 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import { BasicLayout, BlankLayout } from './layouts';
+import { BasicLayout, MinimalLayout } from './layouts';
 import Profile from './views/Profile';
 import Home from './views/Home';
 import Login from './views/Login';
+import Signup from './views/Signup';
+import Address from './views/Address';
 
 export type RouteType = {
   path: string;
@@ -34,8 +36,18 @@ const COMMON_ROUTES = [
   },
   {
     path: '/login',
-    layout: BasicLayout,
+    layout: MinimalLayout,
     component: Login
+  },
+  {
+    path: '/signup',
+    layout: MinimalLayout,
+    component: Signup
+  },
+  {
+    path: '/address',
+    layout: MinimalLayout,
+    component: Address
   },
   // Routes for future pages, please ensure that these all have layouts and components added.
   // {
@@ -43,13 +55,6 @@ const COMMON_ROUTES = [
   // },
   // {
   //   path: '/billing',
-  // },
-
-  // {
-  //   path: '/signup',
-  // },
-  // {
-  //   path: 'address'
   // },
 ];
 
