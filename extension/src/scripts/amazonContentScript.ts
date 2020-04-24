@@ -1,4 +1,5 @@
 import renderGetTodayButton from '../components/GetTodayButton';
+import insertNodeAfterExistingElement from '../helpers/insertNodeAfterExistingElement';
 
 let addToCartButtonContainer = document.querySelector('#addToCart_feature_div');
 let searchResultContainer = document.querySelectorAll(
@@ -34,17 +35,5 @@ if (addToCartButtonContainer) {
     onClick: () => {},
   });
 
-  // This entire next section is for inserting something after an existing element 😱
-  if (addToCartButtonContainer.nextSibling) {
-    if (addToCartButtonContainer.parentNode) {
-      addToCartButtonContainer.parentNode.insertBefore(
-        button,
-        addToCartButtonContainer,
-      );
-    }
-  } else {
-    if (addToCartButtonContainer.parentNode) {
-      addToCartButtonContainer.parentNode.appendChild(button);
-    }
-  }
+  insertNodeAfterExistingElement(button, addToCartButtonContainer);
 }

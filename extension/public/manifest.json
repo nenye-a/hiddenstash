@@ -13,7 +13,7 @@
       "js": ["js/contentScript.js"]
     },
     {
-      "matches": ["http://*.amazon.com/*", "https://*.amazon.com/*"],
+      "matches": ["https://*.amazon.com/*"],
       "js": ["js/amazonContentScript.js"]
     }
   ],
