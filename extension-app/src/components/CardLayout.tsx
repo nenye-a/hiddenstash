@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { Text } from 'exoflex';
 
+import hiddenStashIcon from '../../assets/hiddenstash-icon.svg';
 import { THEME_COLOR, WHITE } from '../constants/colors';
 
 type Props = {
@@ -14,6 +15,11 @@ export default function CardLayout(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
+        <Image
+          source={hiddenStashIcon}
+          resizeMode="contain"
+          style={styles.icon}
+        />
         <Text style={styles.whiteText}>Hidden Stash Cart</Text>
       </View>
       <View style={styles.content}>{children}</View>
@@ -24,6 +30,7 @@ export default function CardLayout(props: Props) {
 
 const styles = StyleSheet.create({
   container: {
+    overflow: 'hidden',
     borderRadius: 5,
     backgroundColor: 'transparent',
   },
@@ -31,8 +38,10 @@ const styles = StyleSheet.create({
     height: 34,
     backgroundColor: THEME_COLOR,
     padding: 5,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
+  icon: { height: 20, width: 20, marginRight: 8 },
   content: {
     overflow: 'scroll',
     height: 250,

@@ -5,3 +5,4 @@ export const GREY = '#CBCBCB';
 export const WHITE = '#FFFFFF';
 
 export const THEME_COLOR = STASH_ORANGE;
+export const MUTED_TEXT_COLOR = GREY;

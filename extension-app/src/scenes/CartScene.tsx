@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, FlatList } from 'react-native';
 import { Text, Checkbox, Button } from 'exoflex';
 
 import CardLayout from '../components/CardLayout';
+import { MUTED_TEXT_COLOR } from '../constants/colors';
 
 const ITEM_LIST = [
   {
@@ -36,10 +37,10 @@ export default function CartScene() {
               />
               <View style={[styles.flex, styles.leftMargin]}>
                 <Text>{name}</Text>
-                <Text>{description}</Text>
+                <Text style={styles.description}>{description}</Text>
               </View>
               <View>
-                <Checkbox size={15} />
+                <Checkbox size={15} disabled />
                 <Button compact style={{ marginVertical: 10 }}>
                   {status}
                 </Button>
@@ -59,11 +60,15 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
-    padding: 5,
+    padding: 10,
   },
   image: {
     width: 96,
     height: 96,
   },
   leftMargin: { marginLeft: 20 },
+  description: {
+    color: MUTED_TEXT_COLOR,
+    marginTop: 5,
+  },
 });
