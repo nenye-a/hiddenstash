@@ -1,8 +1,16 @@
-import React, { ReactNode, DetailedHTMLProps, FormHTMLAttributes, FormEvent } from 'react';
+import React, {
+  ReactNode,
+  DetailedHTMLProps,
+  FormHTMLAttributes,
+  FormEvent,
+} from 'react';
 import styled from 'styled-components';
 
 type Props = ViewProps &
-  Omit<DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>, 'onSubmit'> & {
+  Omit<
+    DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
+    'onSubmit'
+  > & {
     children: ReactNode;
     onSubmit?: () => void;
   };

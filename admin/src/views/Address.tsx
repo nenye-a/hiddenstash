@@ -3,11 +3,9 @@ import styled from 'styled-components';
 
 import { View, Card } from '../core-ui';
 
-import AddressForm from "./AddressForm";
-
+import AddressForm from './AddressForm';
 
 export default function Address() {
-
   return (
     <Container>
       <AddressCard>
@@ -15,9 +13,8 @@ export default function Address() {
           <AddressForm />
         </FormContainer>
       </AddressCard>
-
-    </Container >
-  )
+    </Container>
+  );
 }
 
 const Container = styled(View)`

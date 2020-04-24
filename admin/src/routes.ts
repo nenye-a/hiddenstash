@@ -37,17 +37,17 @@ const COMMON_ROUTES = [
   {
     path: '/login',
     layout: MinimalLayout,
-    component: Login
+    component: Login,
   },
   {
     path: '/signup',
     layout: MinimalLayout,
-    component: Signup
+    component: Signup,
   },
   {
     path: '/address',
     layout: MinimalLayout,
-    component: Address
+    component: Address,
   },
   // Routes for future pages, please ensure that these all have layouts and components added.
   // {

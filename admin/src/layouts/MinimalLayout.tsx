@@ -11,7 +11,7 @@ type Props = {
 
 const Container = styled(View)`
   min-height: 100vh;
-  background-color:  ${LIGHTER_GRAY}
+  background-color: ${LIGHTER_GRAY};
 `;
 
 export default function BasicLayout(props: Props) {

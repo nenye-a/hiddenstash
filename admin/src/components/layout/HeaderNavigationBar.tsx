@@ -4,7 +4,11 @@ import { useHistory } from 'react-router-dom';
 
 import { TouchableOpacity, Text, Button, View } from '../../core-ui';
 // import InsembleLogo from '../common/InsembleLogo';  TODO: needs to be converted to the hidden stash logo.
-import { WHITE, HEADER_BORDER_COLOR, THEME_COLOR } from '../../constants/colors';
+import {
+  WHITE,
+  HEADER_BORDER_COLOR,
+  THEME_COLOR,
+} from '../../constants/colors';
 import { NAVBAR_HEIGHT, FONT_SIZE_LARGE } from '../../constants/theme';
 
 // import { useCredentials } from '../../utils'; TODO: commented out until we have credentials
@@ -19,7 +23,7 @@ export default function HeaderNavigationBar() {
           history.push('/profile'); // TODO: make this go to profile by default
         }}
       >
-        <Text color='white'> HIDDENSTASH </Text>
+        <Text color="white"> HIDDENSTASH </Text>
         {/* TODO: The above to be replaced with reall logo later */}
         {/* <InsembleLogo color="purple" /> */}
       </TouchableOpacity>
@@ -30,30 +34,28 @@ export default function HeaderNavigationBar() {
             history.push('/profile');
           }}
         >
-          <Text color='white'> Profile </Text>
+          <Text color="white"> Profile </Text>
         </HeaderItem>
         <HeaderItem
           onPress={() => {
             history.push('/profile');
           }}
         >
-          <Text color='white'> Billing </Text>
+          <Text color="white"> Billing </Text>
         </HeaderItem>
         <HeaderItem
           onPress={() => {
             history.push('/profile');
           }}
         >
-          <Text color='white'> Orders </Text>
+          <Text color="white"> Orders </Text>
         </HeaderItem>
-        <LogOut
-          mode='secondary'
-          text='Log out'
-        >
-          onPress={() => {
+        <LogOut mode="secondary" text="Log out">
+          onPress=
+          {() => {
             history.push('/');
           }}
-          <Text color='white'> Log Out </Text>
+          <Text color="white"> Log Out </Text>
         </LogOut>
       </RowView>
     </Container>
@@ -82,7 +84,7 @@ const RowView = styled(View)`
 const HeaderItem = styled(TouchableOpacity)`
   font-size: ${FONT_SIZE_LARGE};
   padding: 5px;
-`
+`;
 
 const LogOut = styled(Button)`
   margin: 0 12px 0 5px;

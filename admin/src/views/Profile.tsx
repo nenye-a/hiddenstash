@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { View, Card } from '../core-ui';
 
-import ProfileForm from "./ProfileForm";
+import ProfileForm from './ProfileForm';
 
 // import { useHistory } from 'react-router-dom';
 
@@ -12,13 +12,13 @@ export default function Profile() {
 
   return (
     <Container>
-      <ProfileCard title='Profile'>
+      <ProfileCard title="Profile">
         <FormContainer>
           <ProfileForm />
         </FormContainer>
       </ProfileCard>
     </Container>
-  )
+  );
 }
 
 const Container = styled(View)`

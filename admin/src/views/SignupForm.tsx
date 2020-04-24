@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-
 import { View, Form, TextInput, Button } from '../core-ui';
 
 export default function SignupForm() {
-  let textInputContainerStyle = { paddingTop: 6, paddingBottom: 6 }
+  let textInputContainerStyle = { paddingTop: 6, paddingBottom: 6 };
 
   return (
     <Container>
@@ -30,12 +29,12 @@ export default function SignupForm() {
         <SubmitButton text="Submit" type="submit" />
       </Form>
     </Container>
-  )
-};
+  );
+}
 
 const Container = styled(View)`
   flex: 1;
-  justify-content: center
+  justify-content: center;
 `;
 
 const SubmitButton = styled(Button)`

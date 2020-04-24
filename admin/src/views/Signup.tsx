@@ -3,20 +3,18 @@ import styled from 'styled-components';
 
 import { View, Card } from '../core-ui';
 
-import SignupForm from "./SignupForm";
-
+import SignupForm from './SignupForm';
 
 export default function Signup() {
-
   return (
     <Container>
-      <SignupCard title='Sign up'>
+      <SignupCard title="Sign up">
         <FormContainer>
           <SignupForm />
         </FormContainer>
       </SignupCard>
     </Container>
-  )
+  );
 }
 
 const Container = styled(View)`

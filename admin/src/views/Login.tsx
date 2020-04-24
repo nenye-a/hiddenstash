@@ -4,15 +4,14 @@ import { useHistory } from 'react-router-dom';
 
 import { View, Card, Button, Text } from '../core-ui';
 
-import LoginForm from "./LoginForm";
-
+import LoginForm from './LoginForm';
 
 export default function Login() {
   let history = useHistory();
 
   return (
     <Container>
-      <LoginCard title='Login'>
+      <LoginCard title="Login">
         <FormContainer>
           <LoginForm />
           <RowView>
@@ -27,9 +26,8 @@ export default function Login() {
           </RowView>
         </FormContainer>
       </LoginCard>
-
     </Container>
-  )
+  );
 }
 
 const Container = styled(View)`

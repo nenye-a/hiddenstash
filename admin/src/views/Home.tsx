@@ -7,11 +7,7 @@ import { View, Text, TextInput } from '../core-ui';
 export default function Home() {
   // let history = useHistory();
 
-  return (
-    <Container>
-      {/* <Text>Home</Text> */}
-    </Container>
-  );
+  return <Container>{/* <Text>Home</Text> */}</Container>;
 }
 
 const Container = styled(View)`

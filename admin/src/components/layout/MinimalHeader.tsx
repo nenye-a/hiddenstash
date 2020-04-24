@@ -9,11 +9,10 @@ import { NAVBAR_HEIGHT } from '../../constants/theme';
 // import { useCredentials } from '../../utils'; TODO: commented out until we have credentials
 
 export default function MinimalHeader() {
-
   return (
     <Container>
       <TouchableOpacity>
-        <Text color='white'> HIDDENSTASH </Text>
+        <Text color="white"> HIDDENSTASH </Text>
         {/* TODO: The above to be replaced with real logo later */}
         {/* <InsembleLogo color="purple" /> */}
       </TouchableOpacity>
