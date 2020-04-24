@@ -23,7 +23,7 @@ const COMMON_ROUTES = [
   {
     path: '/',
     exact: true,
-    layout: BlankLayout,
+    layout: BasicLayout,
     component: Home,
   },
   {

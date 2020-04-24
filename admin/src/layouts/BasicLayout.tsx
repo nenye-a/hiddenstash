@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import HeaderNavigationBar from '../components/layout/HeaderNavigationBar';
 import { View } from '../core-ui';
 
 type Props = {
@@ -12,5 +13,10 @@ const Container = styled(View)`
 `;
 
 export default function BasicLayout(props: Props) {
-  return <Container>{props.children}</Container>;
+  return (
+    <Container>
+      <HeaderNavigationBar />
+      {props.children}
+    </Container>
+  );
 }
