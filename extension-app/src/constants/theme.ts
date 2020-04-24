@@ -1,4 +1,4 @@
-import AvenirRegular from '../../assets/fonts/AvenirLTStd-Book.otf';
+import AvenirRegular from '../../assets/fonts/AvenirLTStd-Medium.otf';
 
 import { THEME_COLOR, WHITE } from './colors';
 
@@ -12,6 +12,7 @@ let customTheme = {
         name: 'Avenir',
         weight: '400' as '400',
         source: AvenirRegular,
+        size: 12,
       },
     },
   },
