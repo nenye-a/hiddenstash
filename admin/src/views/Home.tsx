@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { View, Text, TextInput } from '../core-ui';
+import { View } from '../core-ui';
 // import { useHistory } from 'react-router-dom';
 
 export default function Home() {

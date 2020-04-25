@@ -43,7 +43,6 @@ export default function Card(props: Props) {
     titleProps,
     titleBackground,
     rightTitleComponent,
-    isLocked = false,
     mode = 'primary',
     ...otherProps
   } = props;
@@ -128,11 +127,6 @@ const TitleContainer = styled(View)<TitleContainerProps>`
 
 const SubTitle = styled(Text)`
   font-size: ${FONT_SIZE_SMALL};
-`;
-
-const Row = styled(View)`
-  flex-direction: row;
-  align-items: center;
 `;
 
 const RowedView = styled(View)`

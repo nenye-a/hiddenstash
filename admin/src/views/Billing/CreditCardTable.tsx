@@ -35,17 +35,17 @@ function PaymentMethodRow(props: PaymentMethodList) {
           name="primary"
           title=""
           isSelected={isDefault}
-        // onPress={async () => {
-        //   if (isDefault || changeDefaultLoading) {
-        //     return;
-        //   }
-        //   await changeDefaultPaymentMethod({
-        //     variables: {
-        //       paymentMethodId: id,
-        //     },
-        //     refetchQueries: ['PaymentMethodList'],
-        //   });
-        // }}
+          // onPress={async () => {
+          //   if (isDefault || changeDefaultLoading) {
+          //     return;
+          //   }
+          //   await changeDefaultPaymentMethod({
+          //     variables: {
+          //       paymentMethodId: id,
+          //     },
+          //     refetchQueries: ['PaymentMethodList'],
+          //   });
+          // }}
         />
       </DataTable.Cell>
       <DataTable.Cell width={220}>

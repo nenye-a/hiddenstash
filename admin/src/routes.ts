@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-
 import { BasicLayout, MinimalLayout } from './layouts';
 import Profile from './views/Profile';
 import Home from './views/Home';

@@ -39,7 +39,6 @@ const ITEM_LIST: Array<OrderItem> = [
 ];
 
 export default function Orders() {
-
   return (
     <Container>
       <OrdersContainer>
