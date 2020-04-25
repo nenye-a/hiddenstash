@@ -2,15 +2,16 @@ import React, { useReducer } from 'react';
 import styled from 'styled-components';
 
 import { View, Card, Text, Button } from '../core-ui';
-import { FONT_SIZE_NORMAL_PLUS, FONT_WEIGHT_BOLD } from '../constants/theme'
-import { THEME_COLOR, TEXT_COLOR } from '../constants/colors'
-import addNewCardReducer, { initialNewCardState } from '../reducers/addNewCardReducer';
+import { FONT_SIZE_NORMAL_PLUS, FONT_WEIGHT_BOLD } from '../constants/theme';
+import { THEME_COLOR, TEXT_COLOR } from '../constants/colors';
+import addNewCardReducer, {
+  initialNewCardState,
+} from '../reducers/addNewCardReducer';
 
 import AddNewCardForm from './Billing/AddNewCardForm';
 import CreditCardTable from './Billing/CreditCardTable';
 
 // import { useHistory } from 'react-router-dom';
-
 
 export default function Billing() {
   // let history = useHistory();
@@ -35,11 +36,10 @@ export default function Billing() {
 }
 
 const Title = styled(Text)`
-color: ${THEME_COLOR};
-font-weight: ${FONT_WEIGHT_BOLD};
-font-size: ${FONT_SIZE_NORMAL_PLUS};
-margin: 12px 0;
-
+  color: ${THEME_COLOR};
+  font-weight: ${FONT_WEIGHT_BOLD};
+  font-size: ${FONT_SIZE_NORMAL_PLUS};
+  margin: 12px 0;
 `;
 
 const Container = styled(View)`
@@ -53,11 +53,11 @@ const BillingCard = styled(Card)`
 `;
 
 const ContentContainer = styled(View)`
-padding:20px 12px;
+  padding: 20px 12px;
 `;
 
 const SaveButtonContainer = styled(View)`
-  padding: 0px 12px
+  padding: 0px 12px;
 `;
 
 const SaveButton = styled(Button)`

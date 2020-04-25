@@ -1,9 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardCvcElement, CardExpiryElement, CardNumberElement } from '@stripe/react-stripe-js';
+import {
+  CardCvcElement,
+  CardExpiryElement,
+  CardNumberElement,
+} from '@stripe/react-stripe-js';
 
 import { View, Label } from '../../core-ui';
-import { FONT_FAMILY_NORMAL, FONT_SIZE_NORMAL, DEFAULT_BORDER_RADIUS } from '../../constants/theme';
+import {
+  FONT_FAMILY_NORMAL,
+  FONT_SIZE_NORMAL,
+  DEFAULT_BORDER_RADIUS,
+} from '../../constants/theme';
 import {
   TEXT_COLOR,
   TEXT_INPUT_BORDER_COLOR,

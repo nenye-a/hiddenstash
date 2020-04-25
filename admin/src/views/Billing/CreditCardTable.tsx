@@ -35,21 +35,23 @@ function PaymentMethodRow(props: PaymentMethodList) {
           name="primary"
           title=""
           isSelected={isDefault}
-        // onPress={async () => {
-        //   if (isDefault || changeDefaultLoading) {
-        //     return;
-        //   }
-        //   await changeDefaultPaymentMethod({
-        //     variables: {
-        //       paymentMethodId: id,
-        //     },
-        //     refetchQueries: ['PaymentMethodList'],
-        //   });
-        // }}
+          // onPress={async () => {
+          //   if (isDefault || changeDefaultLoading) {
+          //     return;
+          //   }
+          //   await changeDefaultPaymentMethod({
+          //     variables: {
+          //       paymentMethodId: id,
+          //     },
+          //     refetchQueries: ['PaymentMethodList'],
+          //   });
+          // }}
         />
       </DataTable.Cell>
       <DataTable.Cell width={220}>
-        <Text fontWeight={FONT_WEIGHT_LIGHT}>Card ending in **{lastFourDigits}</Text>
+        <Text fontWeight={FONT_WEIGHT_LIGHT}>
+          Card ending in **{lastFourDigits}
+        </Text>
       </DataTable.Cell>
       <DataTable.Cell>
         <Text fontWeight={FONT_WEIGHT_LIGHT}>
@@ -71,16 +73,16 @@ const paymentMethodList = [
     lastFourDigits: '4467',
     expMonth: 8,
     expYear: 2020,
-    isDefault: true
+    isDefault: true,
   },
   {
     id: '1',
     lastFourDigits: '4437',
     expMonth: 8,
     expYear: 2020,
-    isDefault: false
-  }
-]
+    isDefault: false,
+  },
+];
 
 // TODO: move this typing elsewhere (either generated or determined in a different fashion)
 interface PaymentMethodList {

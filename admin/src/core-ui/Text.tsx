@@ -5,6 +5,7 @@ import { TEXT_COLOR } from '../constants/colors';
 
 type TextProps = ViewProps & {
   color?: string;
+  textAlign?: string;
   fontSize?: string;
   fontFamily?: string;
   fontWeight?: string | number;
@@ -19,6 +20,7 @@ let Text = styled.span<TextProps>`
   overflow-wrap: break-word;
   border: 0 solid black;
   border-image: initial;
+  text-align: ${(props) => (props.textAlign ? props.textAlign : 'left')};
   color: ${(props) => (props.color ? props.color : TEXT_COLOR)};
   font-size: ${(props) => (props.fontSize ? props.fontSize : FONT_SIZE_NORMAL)};
   font-family: ${(props) =>

@@ -5,8 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import routes, { RouteType } from './routes';
 
-
-let stripePromise = loadStripe('');  //TODO: place real key in here.
+let stripePromise = loadStripe(''); //TODO: place real key in here.
 
 export default function App() {
   return (

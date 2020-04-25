@@ -13,6 +13,7 @@ import Login from './views/Login';
 import Signup from './views/Signup';
 import Address from './views/Address';
 import Billing from './views/Billing';
+import Orders from './views/Orders';
 
 export type RouteType = {
   path: string;
@@ -53,12 +54,13 @@ const COMMON_ROUTES = [
   {
     path: '/billing',
     layout: BasicLayout,
-    component: Billing
+    component: Billing,
   },
-  // Routes for future pages, please ensure that these all have layouts and components added.
-  // {
-  //   path: '/orders',
-  // },
+  {
+    path: '/orders',
+    layout: BasicLayout,
+    component: Orders,
+  },
 ];
 
 export default COMMON_ROUTES;

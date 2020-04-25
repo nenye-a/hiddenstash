@@ -46,7 +46,7 @@ let CellAlign = {
   right: 'flex-end',
 };
 
-const Cell = styled(View) <CellProps>`
+const Cell = styled(View)<CellProps>`
   max-width: ${({ width }) => width + 'px'};
   min-width: ${({ width }) => width + 'px'};
   flex: 1;
@@ -56,7 +56,7 @@ const Cell = styled(View) <CellProps>`
   padding: 24px;
 `;
 
-const Row = styled(View) <RowProps>`
+const Row = styled(View)<RowProps>`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
