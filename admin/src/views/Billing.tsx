@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { View, Card, Text, Button } from '../core-ui';
 import { FONT_SIZE_NORMAL_PLUS, FONT_WEIGHT_BOLD } from '../constants/theme';
-import { THEME_COLOR, TEXT_COLOR } from '../constants/colors';
+import { THEME_COLOR } from '../constants/colors';
 import addNewCardReducer, {
   initialNewCardState,
 } from '../reducers/addNewCardReducer';
@@ -54,10 +54,6 @@ const BillingCard = styled(Card)`
 
 const ContentContainer = styled(View)`
   padding: 20px 12px;
-`;
-
-const SaveButtonContainer = styled(View)`
-  padding: 0px 12px;
 `;
 
 const SaveButton = styled(Button)`

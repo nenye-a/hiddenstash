@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { FlatList } from 'react-native';
 
-import { View, Card, Text, Button } from '../core-ui';
+import { View, Text } from '../core-ui';
 import { FONT_SIZE_NORMAL_PLUS, FONT_WEIGHT_BOLD } from '../constants/theme';
-import { THEME_COLOR, TEXT_COLOR } from '../constants/colors';
+import { THEME_COLOR } from '../constants/colors';
 
 import OrderCard from './Orders/OrderCard';
 import { OrderItem } from './Orders/OrderItem';
