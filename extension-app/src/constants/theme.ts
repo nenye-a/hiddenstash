@@ -1,4 +1,6 @@
-import AvenirRegular from '../../assets/fonts/AvenirLTStd-Medium.otf';
+import AvenirBook from '../../assets/fonts/AvenirLTStd-Book.otf';
+import AvenirMedium from '../../assets/fonts/AvenirLTStd-Medium.otf';
+import AvenirHeavy from '../../assets/fonts/AvenirLTStd-Heavy.otf';
 
 import { THEME_COLOR, WHITE } from './colors';
 
@@ -11,8 +13,20 @@ let customTheme = {
       normal: {
         name: 'Avenir',
         weight: '400' as '400',
-        source: AvenirRegular,
-        size: 12,
+        source: AvenirBook,
+        size: 15,
+      },
+      medium: {
+        name: 'Avenir-Medium',
+        weight: '600' as '600',
+        source: AvenirMedium,
+        size: 15,
+      },
+      bold: {
+        name: 'Avenir-Bold',
+        weight: 'bold' as 'bold',
+        source: AvenirHeavy,
+        size: 15,
       },
     },
   },
@@ -22,13 +36,21 @@ let customTheme = {
   style: {
     button: {
       labelStyle: {
-        fontSize: 10,
+        fontSize: 15,
         color: WHITE,
       },
       contentStyle: {
-        height: 21,
-        minWidth: 60,
-        width: 60,
+        height: 40,
+        maxHeight: 40,
+        minWidth: 96,
+        width: 96,
+      },
+    },
+    textInput: {
+      containerStyle: {
+        maxHeight: 40,
+        height: 40,
+        marginBottom: 20,
       },
     },
   },

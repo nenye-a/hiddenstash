@@ -2,25 +2,51 @@ import React, { ReactNode } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import { Text } from 'exoflex';
 
-import hiddenStashIcon from '../../assets/hiddenstash-icon.svg';
-import { THEME_COLOR, WHITE } from '../constants/colors';
+import hiddenStashIcon from '../../assets/hiddenstash-white-logo.svg';
+import {
+  THEME_COLOR,
+  WHITE,
+  ALT_TEXT_COLOR,
+  MEDIUM_LIGHT_GREY,
+} from '../constants/colors';
 
 type Props = {
+  detail?: boolean;
   children?: ReactNode;
   footer?: ReactNode;
 };
 
 export default function CardLayout(props: Props) {
-  let { children, footer } = props;
+  let { detail, children, footer } = props;
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Image
-          source={hiddenStashIcon}
-          resizeMode="contain"
-          style={styles.icon}
-        />
-        <Text style={styles.whiteText}>Hidden Stash Cart</Text>
+        <View style={styles.titleRow}>
+          <Image
+            source={hiddenStashIcon}
+            resizeMode="contain"
+            style={styles.icon}
+          />
+          <Text weight="bold" style={styles.titleText}>
+            Hiddenstash
+          </Text>
+        </View>
+        {detail ? (
+          <>
+            <View style={styles.titleRow}>
+              <Text weight="medium" style={{ color: WHITE }}>
+                Find cheaper sources of any item!
+              </Text>
+            </View>
+            <View style={styles.titleRow}>
+              <Text style={{ color: ALT_TEXT_COLOR, fontSize: 12 }}>
+                Enter the name and price of an item and we'll do the rest
+              </Text>
+            </View>
+          </>
+        ) : (
+          <></>
+        )}
       </View>
       <View style={styles.content}>{children}</View>
       <View style={styles.footer}>{footer}</View>
@@ -33,23 +59,43 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 5,
     backgroundColor: 'transparent',
+    // May need to remove the following after devleopment and restrict size using iframe container.
+    height: 470,
+    width: 415,
+    elevation: 1,
+    shadowColor: MEDIUM_LIGHT_GREY,
+    shadowOpacity: 0.63,
+    shadowOffset: { height: 0, width: 0 },
+    shadowRadius: 20,
   },
   titleContainer: {
-    height: 34,
+    minHeight: 55,
     backgroundColor: THEME_COLOR,
-    padding: 5,
+    padding: 15,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  titleRow: {
+    marginVertical: 5,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  icon: { height: 20, width: 20, marginRight: 8 },
+  icon: {
+    height: 28,
+    width: 30,
+    marginRight: 8,
+  },
   content: {
     overflow: 'scroll',
     height: 250,
   },
-  whiteText: {
+  titleText: {
     color: WHITE,
+    fontSize: 20,
   },
   footer: {
-    height: 34,
+    flex: 1,
+    justifyContent: 'flex-end',
+    height: 70,
   },
 });
