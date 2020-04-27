@@ -1,19 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider as ExoflexProvider } from 'exoflex';
+
+import CartScene from './scenes/CartScene';
+import Home from './scenes/Home';
+import Search from './scenes/Search';
+import Results from './scenes/Results';
+import customTheme from './constants/theme';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <ExoflexProvider theme={customTheme}>
+      {/* TODO: move to router */}
+      {/* <CartScene /> */}
+      <Results />
+    </ExoflexProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
