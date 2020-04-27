@@ -2,7 +2,7 @@ import AvenirBook from '../../assets/fonts/AvenirLTStd-Book.otf';
 import AvenirMedium from '../../assets/fonts/AvenirLTStd-Medium.otf';
 import AvenirHeavy from '../../assets/fonts/AvenirLTStd-Heavy.otf';
 
-import { THEME_COLOR, WHITE } from './colors';
+import { THEME_COLOR, WHITE, TEXT_COLOR } from './colors';
 
 let customTheme = {
   colors: {

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, ScrollView, StyleSheet, Image } from 'react-native';
 import { Text } from 'exoflex';
 
 import hiddenStashIcon from '../../assets/hiddenstash-white-logo.svg';
@@ -48,7 +48,7 @@ export default function CardLayout(props: Props) {
           <></>
         )}
       </View>
-      <View style={styles.content}>{children}</View>
+      <ScrollView style={styles.content}>{children}</ScrollView>
       <View style={styles.footer}>{footer}</View>
     </View>
   );
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   content: {
     overflow: 'scroll',
-    height: 250,
+    marginBottom: 15,
   },
   titleText: {
     color: WHITE,
