@@ -17,7 +17,7 @@ export default function renderGetTodayButton(props: Props) {
   Object.assign(textContainer.style, {
     color: '#fff',
     display: 'flex',
-    'align-items': 'center',
+    'align-self': 'baseline',
     ...(mode === 'small'
       ? {
           'font-size': '10px',
@@ -42,6 +42,7 @@ export default function renderGetTodayButton(props: Props) {
         ? {
             height: '10px',
             width: '10px',
+            'margin-right': '4px',
           }
         : { height: '20px', width: '20px' }),
     });
@@ -51,7 +52,7 @@ export default function renderGetTodayButton(props: Props) {
   button.appendChild(textContainer);
   Object.assign(button.style, {
     display: 'flex',
-    'align-items': 'center',
+    'align-items': 'flex-end',
     'border-radius': '5px',
     'background-color': THEME_COLOR,
     ...(mode === 'small'
