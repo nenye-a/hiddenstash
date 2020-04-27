@@ -28,7 +28,7 @@ function SearchFooter() {
         onPress={() => {
           history.push('/');
         }}
-        style={styles.secondaryFooterButton}
+        preset="invisible"
         labelStyle={styles.secondaryFooterText}
       >
         Back
@@ -37,7 +37,6 @@ function SearchFooter() {
         onPress={() => {
           history.push('/results');
         }}
-        style={styles.primaryFooterButton}
       >
         Find
       </Button>
@@ -49,14 +48,6 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 20,
     paddingHorizontal: 15,
-  },
-
-  primaryFooterButton: {
-    height: 40,
-  },
-  secondaryFooterButton: {
-    height: 40,
-    backgroundColor: 'transparent',
   },
   secondaryFooterText: {
     color: GREY,

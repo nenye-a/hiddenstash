@@ -1,6 +1,6 @@
-import AvenirBook from '../../assets/fonts/AvenirLTStd-Book.otf'; // change the source
+import AvenirBook from '../../assets/fonts/Avenir-Book.otf'; // change the source
 import AvenirMedium from '../../assets/fonts/Avenir-Medium.otf';
-import AvenirHeavy from '../../assets/fonts/AvenirLTStd-Heavy.otf';
+import AvenirHeavy from '../../assets/fonts/Avenir-Heavy.otf';
 
 import { THEME_COLOR, WHITE, ACCENT_COLOR } from './colors';
 
