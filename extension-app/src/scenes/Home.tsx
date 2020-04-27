@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Image, FlatList } from 'react-native';
-import { Text, Checkbox, Button } from 'exoflex';
-import styledArrow from '../../assets/styled-arrow.svg';
+import { Text, Button } from 'exoflex';
+import { useHistory } from 'react-router-dom';
 
+import styledArrow from '../../assets/styled-arrow.svg';
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
-import { FOOTER_COLOR, GREY, WHITE } from '../constants/colors';
+import { WHITE } from '../constants/colors';
 
 const ITEM_LIST = [
   {
@@ -26,35 +27,37 @@ const ITEM_LIST = [
 ];
 
 export default function Home() {
+  let history = useHistory();
+
   return (
     <CardLayout detail>
       <View style={styles.container}>
-        <Button style={styles.button}>
-          <View style={styles.buttonContent}>
-            <Text weight="medium" style={{ color: WHITE, margin: 10 }}>
-              New Search
-            </Text>
-            <Image
-              source={styledArrow}
-              resizeMode="contain"
-              style={styles.arrow}
-            />
-          </View>
+        <Button
+          style={styles.button}
+          contentStyle={{ width: 250 }}
+          onPress={() => {
+            history.push('/search');
+          }}
+        >
+          <Text weight="medium" style={[styles.whiteText, styles.rightMargin]}>
+            New Search
+          </Text>
+          <Image
+            source={styledArrow}
+            resizeMode="contain"
+            style={styles.arrow}
+          />
         </Button>
-        <Text style={{ marginBottom: 10 }}>Previous Searches</Text>
+        <Text style={styles.bottomMargin}>Previous Searches</Text>
         <FlatList
           data={ITEM_LIST}
           renderItem={({ item }) => {
             let { name, price, numResults } = item;
             return (
-              <Summary
-                name={name}
-                price={price}
-                numResults={numResults}
-              ></Summary>
+              <Summary name={name} price={price} numResults={numResults} />
             );
           }}
-        ></FlatList>
+        />
       </View>
     </CardLayout>
   );
@@ -74,14 +77,16 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     width: 250,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginBottom: 30,
+    paddingHorizontal: 5,
   },
-  buttonContent: {
-    width: 250,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+  bottomMargin: {
+    marginBottom: 10,
+  },
+  whiteText: {
+    color: WHITE,
+  },
+  rightMargin: {
+    marginRight: 5,
   },
 });

@@ -1,12 +1,13 @@
-import AvenirBook from '../../assets/fonts/AvenirLTStd-Book.otf';
-import AvenirMedium from '../../assets/fonts/AvenirLTStd-Medium.otf';
+import AvenirBook from '../../assets/fonts/AvenirLTStd-Book.otf'; // change the source
+import AvenirMedium from '../../assets/fonts/Avenir-Medium.otf';
 import AvenirHeavy from '../../assets/fonts/AvenirLTStd-Heavy.otf';
 
-import { THEME_COLOR, WHITE, TEXT_COLOR } from './colors';
+import { THEME_COLOR, WHITE, ACCENT_COLOR } from './colors';
 
 let customTheme = {
   colors: {
     primary: THEME_COLOR,
+    accent: ACCENT_COLOR,
   },
   fonts: {
     default: {

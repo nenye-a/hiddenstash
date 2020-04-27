@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image, FlatList } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Text, TextInput, Button } from 'exoflex';
 
 import CardLayout from '../components/CardLayout';
@@ -10,9 +10,9 @@ export default function Search() {
     <CardLayout detail={true} footer={SearchFooter()}>
       <View style={styles.container}>
         <Text>Product Name </Text>
-        <TextInput></TextInput>
+        <TextInput />
         <Text>Price </Text>
-        <TextInput containerStyle={{ maxWidth: 120 }}></TextInput>
+        <TextInput containerStyle={{ maxWidth: 120 }} />
       </View>
     </CardLayout>
   );
