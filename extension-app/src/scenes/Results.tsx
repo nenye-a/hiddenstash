@@ -47,14 +47,10 @@ export default function Results() {
         <FlatList
           data={RESULT_LIST}
           renderItem={({ item }) => {
-            let { name, price, link, position } = item;
             return (
               <Result
-                position={position}
-                name={name}
-                price={price}
-                link={link}
-              ></Result>
+                {...item}
+              />
             );
           }}
         ></FlatList>

@@ -33,7 +33,6 @@ export default function Result(props: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'transparent',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
