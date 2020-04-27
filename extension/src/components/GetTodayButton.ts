@@ -34,10 +34,7 @@ export default function renderGetTodayButton(props: Props) {
 
   if (showIcon) {
     let icon = document.createElement('img');
-    // TODO: fix show icon or easy fix just host it somewhere
-    let imgUrl = chrome.extension.getURL(
-      '../../assets/hiddenstash-small-icon.png',
-    );
+    let imgUrl = chrome.runtime.getURL('hiddenstash-small-icon.svg');
     icon.setAttribute('src', imgUrl);
     Object.assign(icon.style, {
       'object-fit': 'contain',

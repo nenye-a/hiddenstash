@@ -18,5 +18,5 @@
     }
   ],
   "permissions": ["storage", "<all_urls>"],
-  "web_accessible_resources": ["assets/*.png"]
+  "web_accessible_resources": ["*.png", "*.svg"]
 }
