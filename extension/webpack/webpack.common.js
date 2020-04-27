@@ -1,11 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const srcDir = '../src/';
+const srcDir = '../src/scripts/';
 
 module.exports = {
   entry: {
     contentScript: path.join(__dirname, srcDir + 'contentScript.ts'),
+    amazonContentScript: path.join(
+      __dirname,
+      srcDir + 'amazonContentScript.ts',
+    ),
   },
   output: {
     path: path.join(__dirname, '../dist/js'),
@@ -17,6 +21,18 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+
+        use: {
+          loader: 'file-loader',
+          query: {
+            name: '[name].[ext]',
+            outputPath: './assets/',
+          },
+        },
+        include: [path.join(__dirname, '../assets')],
       },
     ],
   },
