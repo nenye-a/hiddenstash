@@ -47,11 +47,7 @@ export default function Results() {
         <FlatList
           data={RESULT_LIST}
           renderItem={({ item }) => {
-            return (
-              <Result
-                {...item}
-              />
-            );
+            return <Result {...item} />;
           }}
         ></FlatList>
       </View>
