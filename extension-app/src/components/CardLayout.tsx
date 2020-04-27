@@ -32,7 +32,7 @@ export default function CardLayout(props: Props) {
             Hiddenstash
           </Text>
         </View>
-        {detail ? (
+        {detail && (
           <>
             <View style={styles.titleRow}>
               <Text weight="medium" style={{ color: WHITE }}>
@@ -41,12 +41,10 @@ export default function CardLayout(props: Props) {
             </View>
             <View style={styles.titleRow}>
               <Text style={{ color: ALT_TEXT_COLOR, fontSize: 12 }}>
-                Enter the name and price of an item and we'll do the rest
+                {`Enter the name and price of an item and we'll do the rest`}
               </Text>
             </View>
           </>
-        ) : (
-          <></>
         )}
       </View>
       <ScrollView style={styles.content}>{children}</ScrollView>
