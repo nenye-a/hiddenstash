@@ -39,6 +39,7 @@ let customTheme = {
       labelStyle: {
         fontSize: 15,
         color: WHITE,
+        fontWeight: '400',
       },
       contentStyle: {
         height: 40,

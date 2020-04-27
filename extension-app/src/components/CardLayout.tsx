@@ -8,6 +8,7 @@ import {
   WHITE,
   ALT_TEXT_COLOR,
   MEDIUM_LIGHT_GREY,
+  FOOTER_COLOR,
 } from '../constants/colors';
 
 type Props = {
@@ -49,7 +50,7 @@ export default function CardLayout(props: Props) {
         )}
       </View>
       <ScrollView style={styles.content}>{children}</ScrollView>
-      <View style={styles.footer}>{footer}</View>
+      {footer && <View style={styles.footer}>{footer}</View>}
     </View>
   );
 }
@@ -94,8 +95,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   footer: {
-    flex: 1,
+    backgroundColor: FOOTER_COLOR,
     justifyContent: 'flex-end',
     height: 70,
+    padding: 14,
+    flexDirection: 'row',
   },
 });

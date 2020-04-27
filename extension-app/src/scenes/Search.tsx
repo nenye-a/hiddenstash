@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, TextInput, Button } from 'exoflex';
+import { useHistory } from 'react-router-dom';
 
 import CardLayout from '../components/CardLayout';
-import { FOOTER_COLOR, GREY } from '../constants/colors';
+import { GREY } from '../constants/colors';
 
 export default function Search() {
   return (
@@ -19,19 +20,28 @@ export default function Search() {
 }
 
 function SearchFooter() {
+  let history = useHistory();
+
   return (
-    <View style={styles.footer}>
+    <>
       <Button
-        onPress={() => {}}
+        onPress={() => {
+          history.push('/');
+        }}
         style={styles.secondaryFooterButton}
         labelStyle={styles.secondaryFooterText}
       >
         Back
       </Button>
-      <Button onPress={() => {}} style={styles.primaryFooterButton}>
+      <Button
+        onPress={() => {
+          history.push('/results');
+        }}
+        style={styles.primaryFooterButton}
+      >
         Find
       </Button>
-    </View>
+    </>
   );
 }
 
@@ -40,18 +50,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 15,
   },
-  footer: {
-    backgroundColor: FOOTER_COLOR,
-    paddingLeft: 'auto',
-    paddingRight: 15,
-    paddingTop: 10,
-    paddingBottom: 10,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    width: 'auto',
-    height: 70,
-  },
+
   primaryFooterButton: {
     height: 40,
   },
