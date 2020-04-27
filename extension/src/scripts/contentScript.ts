@@ -24,6 +24,7 @@ function main() {
       position: 'fixed',
       right: '30px',
       bottom: '30px',
+      'z-index': 9999,
     });
 
     let image = document.createElement('img');
@@ -36,6 +37,7 @@ function main() {
       position: 'fixed',
       right: '30px',
       bottom: '30px',
+      'z-index': 9999,
     });
     image.addEventListener('click', (event: MouseEvent) => {
       event.preventDefault();
@@ -50,11 +52,10 @@ function main() {
 
     // hide iframe when clicking outside iframe
     document.addEventListener('click', (evt: MouseEvent) => {
-      let existingIframe = document.querySelector('#hiddenstash-app');
+      let existingIframe = body?.querySelector('#hiddenstash-app');
       // @ts-ignore
       let notClickOnIcon = evt.target.id !== 'hiddenstash-icon';
       if (evt.target !== existingIframe && isCartOpen && notClickOnIcon) {
-        console.log('masuk');
         body?.removeChild(iframe);
         body?.appendChild(image);
         isCartOpen = false;
