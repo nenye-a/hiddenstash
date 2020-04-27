@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "concurrently --kill-others \"yarn --cwd backend dev\" \"yarn --cwd admin start\" \"yarn --cwd extension dev\" \"yarn --cwd extension-app start\"",
     "test": "yarn --cwd backend test && yarn --cwd admin test && yarn --cwd extension test",
-    "postinstall": "yarn --cwd backend install && yarn --cwd admin install && yarn --cwd extension install"
+    "postinstall": "yarn --cwd backend install && yarn --cwd admin install && yarn --cwd extension install && yarn --cwd extension-app install"
   },
   "dependencies": {},
   "devDependencies": {
