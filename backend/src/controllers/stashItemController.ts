@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+
 import prisma from '../prisma';
 import { SERVER_BAD_REQUEST, BAD_REQUEST, API_SECRET } from '../constants';
 

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+
 import { API_SECRET } from '../constants';
 
 export let getTokenController = async (req: Request, res: Response) => {

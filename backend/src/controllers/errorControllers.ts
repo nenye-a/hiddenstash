@@ -1,14 +1,11 @@
-import {Request, Response, NextFunction} from 'express';
-import {BAD_PATH, SERVER_NOT_FOUND} from '../constants';
+import { Request, Response } from 'express';
 
-export function getBadPathController(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+import { BAD_PATH, SERVER_NOT_FOUND } from '../constants';
+
+export function getBadPathController(_: Request, res: Response) {
   res.status(SERVER_NOT_FOUND).json({
     ...BAD_PATH,
   });
 }
 
-export default {getBadPathController};
+export default { getBadPathController };

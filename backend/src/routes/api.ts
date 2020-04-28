@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { getTokenController } from '../controllers/getTokenController';
 import controllers from '../controllers';
 import {

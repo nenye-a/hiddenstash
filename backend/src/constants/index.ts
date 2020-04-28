@@ -1,5 +1,4 @@
 require('dotenv').config();
-import { ResponseObject } from '../types';
 
 //SERVER RETURN CODE
 export const SERVER_OK = 200;
@@ -12,11 +11,11 @@ export const SERVER_ERROR = 500;
 export const API_PORT = process.env.API_PORT || 4040;
 
 //RESPONSE OBJECT
-export const BAD_PATH: ResponseObject = {
+export const BAD_PATH = {
   success: false,
   message: 'NOT FOUND',
 };
-export const BAD_REQUEST: ResponseObject = {
+export const BAD_REQUEST = {
   success: false,
   message: 'BAD REQUEST',
 };
