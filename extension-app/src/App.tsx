@@ -14,6 +14,7 @@ import { API_URL } from './constants/uri';
 const requestHostInterceptor = (host: string) => (_client: Client) => async (
   action: Action,
 ) => {
+  // TODO: add helper
   let token = window.localStorage.getItem('hiddenstash-token');
   return {
     ...action,

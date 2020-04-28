@@ -6,22 +6,10 @@ import { useHistory } from 'react-router-dom';
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
 import Result from '../components/Result';
-
-// TOOD: add type
-
-type Result = {
-  url: string;
-  price: number;
-};
-
-type Results = {
-  name: string;
-  price: number;
-  result: Array<Result>;
-};
+import { SearchResult } from '../types/types';
 
 export default function Results() {
-  let history = useHistory<Results>();
+  let history = useHistory<SearchResult>();
   let data = history.location.state;
   let cardFooter = (
     <Button
@@ -37,11 +25,7 @@ export default function Results() {
     <CardLayout footer={cardFooter}>
       <View style={styles.container}>
         <Text style={{ marginBottom: 10 }}>Showing results for</Text>
-        <Summary
-          name={data.name}
-          price={data.price}
-          numResults={data.result.length}
-        />
+        <Summary name={data.name} price={data.price} result={data.result} />
         <Text style={{ marginTop: 10, marginBottom: 10 }}>
           Found {data.result.length} results
         </Text>

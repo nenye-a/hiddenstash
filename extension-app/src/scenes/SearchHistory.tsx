@@ -8,14 +8,15 @@ import styledArrow from '../../assets/styled-arrow.svg';
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
 import { WHITE } from '../constants/colors';
+import { SearchResult } from '../types/types';
 
 export default function SearchHistory() {
   let history = useHistory();
-  let { loading, payload } = useQuery({
+  let { loading, payload } = useQuery<SearchResult>({
     endpoint: '/stashItem',
     method: 'GET',
   });
-
+  console.log(payload);
   return (
     <CardLayout detail>
       <View style={styles.container}>
@@ -43,10 +44,8 @@ export default function SearchHistory() {
             data={payload}
             keyExtractor={(item) => item.name.toString()}
             renderItem={({ item }) => {
-              let { name, price, numResults } = item;
-              return (
-                <Summary name={name} price={price} numResults={numResults} />
-              );
+              let { name, price, result } = item;
+              return <Summary name={name} price={price} result={result} />;
             }}
             ListEmptyComponent={() => (
               <View>
