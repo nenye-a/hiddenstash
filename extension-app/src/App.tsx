@@ -13,9 +13,15 @@ import customTheme from './constants/theme';
 const requestHostInterceptor = (host: string) => (_client: Client) => async (
   action: Action,
 ) => {
+  let token = window.localStorage.getItem('hiddenstash-token');
   return {
     ...action,
     endpoint: `${host}${action.endpoint}`,
+    ...(token && {
+      headers: {
+        'x-auth-token': token,
+      },
+    }),
   };
 };
 

@@ -1,33 +1,20 @@
 import React from 'react';
 import { View, StyleSheet, Image, FlatList } from 'react-native';
-import { Text, Button } from 'exoflex';
+import { Text, Button, ActivityIndicator } from 'exoflex';
 import { useHistory } from 'react-router-dom';
+import { useQuery } from 'react-fetching-library';
 
 import styledArrow from '../../assets/styled-arrow.svg';
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
 import { WHITE } from '../constants/colors';
 
-const ITEM_LIST = [
-  {
-    name: 'Old product name, limited in chars to fit in the modal',
-    price: '$9.99',
-    numResults: 10,
-  },
-  {
-    name: 'Old product name, limited in chars to fit in the modal',
-    price: '$9.99',
-    numResults: 10,
-  },
-  {
-    name: 'Old product name, limited in chars to fit in the modal',
-    price: '$9.99',
-    numResults: 10,
-  },
-];
-
 export default function SearchHistory() {
   let history = useHistory();
+  let { loading, payload } = useQuery({
+    endpoint: 'stashItem',
+    method: 'GET',
+  });
 
   return (
     <CardLayout detail>
@@ -49,15 +36,24 @@ export default function SearchHistory() {
           />
         </Button>
         <Text style={styles.bottomMargin}>Previous Searches</Text>
-        <FlatList
-          data={ITEM_LIST}
-          renderItem={({ item }) => {
-            let { name, price, numResults } = item;
-            return (
-              <Summary name={name} price={price} numResults={numResults} />
-            );
-          }}
-        />
+        {loading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={payload}
+            renderItem={({ item }) => {
+              let { name, price, numResults } = item;
+              return (
+                <Summary name={name} price={price} numResults={numResults} />
+              );
+            }}
+            ListEmptyComponent={() => (
+              <View>
+                <Text>No Data Found</Text>
+              </View>
+            )}
+          />
+        )}
       </View>
     </CardLayout>
   );
