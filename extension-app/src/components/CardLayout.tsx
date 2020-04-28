@@ -49,7 +49,7 @@ export default function CardLayout(props: Props) {
         )}
       </View>
       <ScrollView style={styles.content}>{children}</ScrollView>
-      <View style={styles.footer}>{footer}</View>
+      {footer && <View style={styles.footer}>{footer}</View>}
     </View>
   );
 }
@@ -58,15 +58,11 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     borderRadius: 5,
-    backgroundColor: 'transparent',
-    // May need to remove the following after devleopment and restrict size using iframe container.
-    height: 470,
-    width: 415,
     elevation: 1,
     shadowColor: MEDIUM_LIGHT_GREY,
     shadowOpacity: 0.63,
     shadowOffset: { height: 0, width: 0 },
-    shadowRadius: 20,
+    shadowRadius: 10,
   },
   titleContainer: {
     minHeight: 55,
@@ -86,8 +82,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   content: {
-    overflow: 'scroll',
-    marginBottom: 15,
+    paddingBottom: 15,
+    backgroundColor: WHITE,
   },
   titleText: {
     color: WHITE,

@@ -2,7 +2,8 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'exoflex';
 
-import { TEXT_COLOR, LINK_COLOR } from '../constants/colors';
+import { LINK_COLOR } from '../constants/colors';
+import Link from '../core-ui/Link';
 
 type Props = {
   position: number;
@@ -20,9 +21,9 @@ export default function Result(props: Props) {
         {position}.
       </Text>
       <View style={styles.content}>
-        <a href={link} style={{ textDecoration: 'none' }}>
+        <Link to={link}>
           <Text style={{ color: LINK_COLOR }}>{name ? name : link}</Text>
-        </a>
+        </Link>
         <Text weight="bold" style={{ marginTop: 5 }}>
           {price}
         </Text>
