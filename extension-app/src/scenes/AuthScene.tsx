@@ -1,17 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ActivityIndicator } from 'exoflex';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { useQuery } from 'react-fetching-library';
 
 export default function AuthScene() {
-  let history = useHistory();
-  // TODO: useQuery
-  let { loading, payload } = { loading: false, payload: 1 };
+  let { loading, payload } = useQuery({
+    endpoint: 'getToken',
+    method: 'GET',
+  });
   if (loading) {
     return <ActivityIndicator />;
   } else if (payload) {
-    window.localStorage.setItem('hiddenstash-token', payload.toString());
-    history.push('/');
+    window.localStorage.setItem('hiddenstash-token', payload.token.toString());
+    return <Redirect to="/" />;
   }
   // TODO: return error component
   return <View />;
