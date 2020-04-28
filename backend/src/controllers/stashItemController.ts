@@ -55,6 +55,12 @@ export let addStashItemController = async (req: Request, res: Response) => {
         name: requestBody.name,
         price: requestBody.price,
         token: payloadToken.toString(),
+        result: {
+          create: {
+            price: 10,
+            url: 'google.com',
+          },
+        },
       },
       select: { name: true, price: true, result: true },
     });
