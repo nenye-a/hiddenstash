@@ -1,12 +1,12 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 import SearchHistory from './SearchHistory';
-import AuthScene from './AuthScene';
 
 export default function Home() {
   let hasToken = window.localStorage.getItem('hiddenstash-tkn');
-  if (hasToken) {
-    <SearchHistory />;
+  if (!hasToken) {
+    return <Redirect to="/auth" />;
   }
-  return <AuthScene />;
+  return <SearchHistory />;
 }
