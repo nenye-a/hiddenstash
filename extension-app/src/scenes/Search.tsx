@@ -31,7 +31,7 @@ export default function Search() {
     <>
       <Button
         onPress={() => {
-          history.push('/');
+          history.goBack();
         }}
         preset="invisible"
         labelStyle={styles.secondaryFooterText}

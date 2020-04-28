@@ -14,7 +14,7 @@ export default function Results() {
   let cardFooter = (
     <Button
       onPress={() => {
-        history.push('/search');
+        history.goBack();
       }}
       style={{ alignSelf: 'flex-end' }}
     >
