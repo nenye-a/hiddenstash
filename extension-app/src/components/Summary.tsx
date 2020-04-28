@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'exoflex';
 
-import { GREEN, TEXT_COLOR, LIGHTER_GREY } from '../constants/colors';
+import { GREEN, LIGHTER_GREY } from '../constants/colors';
 
 type Props = {
   name: string;
@@ -15,19 +15,15 @@ export default function Summary(props: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text weight="bold" style={{ color: TEXT_COLOR }}>
-          {name}
-        </Text>
+        <Text weight="bold">{name}</Text>
       </View>
       <View style={styles.content}>
         <Text weight="bold" style={{ color: GREEN }}>
-          {props.price}
+          {price}
         </Text>
         <View style={styles.resultContainer}>
-          <Text weight="bold" style={{ color: TEXT_COLOR }}>
-            Results:
-          </Text>
-          <Text style={{ marginLeft: 5, color: TEXT_COLOR }}>{numResults}</Text>
+          <Text weight="bold">Results:</Text>
+          <Text style={{ marginLeft: 5 }}>{numResults}</Text>
         </View>
       </View>
     </View>

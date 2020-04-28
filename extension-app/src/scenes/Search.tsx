@@ -1,37 +1,49 @@
-import React from 'react';
-import { View, StyleSheet, Image, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Text, TextInput, Button } from 'exoflex';
+import { useHistory } from 'react-router-dom';
 
 import CardLayout from '../components/CardLayout';
-import { FOOTER_COLOR, GREY } from '../constants/colors';
+import { GREY } from '../constants/colors';
 
 export default function Search() {
-  return (
-    <CardLayout detail={true} footer={SearchFooter()}>
-      <View style={styles.container}>
-        <Text>Product Name </Text>
-        <TextInput></TextInput>
-        <Text>Price </Text>
-        <TextInput containerStyle={{ maxWidth: 120 }}></TextInput>
-      </View>
-    </CardLayout>
-  );
-}
+  let [productName, setProductName] = useState('');
+  let [price, setPrice] = useState('');
+  let history = useHistory();
 
-function SearchFooter() {
-  return (
-    <View style={styles.footer}>
+  let cardFooter = (
+    <>
       <Button
-        onPress={() => {}}
-        style={styles.secondaryFooterButton}
+        onPress={() => {
+          history.push('/');
+        }}
+        preset="invisible"
         labelStyle={styles.secondaryFooterText}
       >
         Back
       </Button>
-      <Button onPress={() => {}} style={styles.primaryFooterButton}>
+      <Button
+        onPress={() => {
+          history.push('/results');
+        }}
+      >
         Find
       </Button>
-    </View>
+    </>
+  );
+  return (
+    <CardLayout detail={true} footer={cardFooter}>
+      <View style={styles.container}>
+        <Text>Product Name </Text>
+        <TextInput value={productName} onChangeText={setProductName} />
+        <Text>Price </Text>
+        <TextInput
+          value={price}
+          onChangeText={setPrice}
+          containerStyle={{ maxWidth: 120 }}
+        />
+      </View>
+    </CardLayout>
   );
 }
 
@@ -39,25 +51,6 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 20,
     paddingHorizontal: 15,
-  },
-  footer: {
-    backgroundColor: FOOTER_COLOR,
-    paddingLeft: 'auto',
-    paddingRight: 15,
-    paddingTop: 10,
-    paddingBottom: 10,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    width: 'auto',
-    height: 70,
-  },
-  primaryFooterButton: {
-    height: 40,
-  },
-  secondaryFooterButton: {
-    height: 40,
-    backgroundColor: 'transparent',
   },
   secondaryFooterText: {
     color: GREY,

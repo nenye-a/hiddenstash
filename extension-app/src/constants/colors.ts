@@ -22,3 +22,4 @@ export const IMPORTANT_TEXT_COLOR = THEME_COLOR;
 export const TEXT_COLOR = TUNGSTEN;
 export const LINK_COLOR = SKY_BLUE;
 export const MUTED_TEXT_COLOR = GREY;
+export const ACCENT_COLOR = STASH_ORANGE;

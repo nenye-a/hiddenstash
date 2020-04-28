@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Image, FlatList } from 'react-native';
-import { Text, Checkbox, Button } from 'exoflex';
-import styledArrow from '../../assets/styled-arrow.svg';
+import { View, StyleSheet, FlatList } from 'react-native';
+import { Text, Button } from 'exoflex';
+import { useHistory } from 'react-router-dom';
 
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
 import Result from '../components/Result';
-import { FOOTER_COLOR, GREY, WHITE } from '../constants/colors';
 
 const RESULT_LIST = [
   {
@@ -32,15 +31,27 @@ const SUMMARY = {
 };
 
 export default function Results() {
+  let history = useHistory();
+
+  let cardFooter = (
+    <Button
+      onPress={() => {
+        history.push('/search');
+      }}
+      style={{ alignSelf: 'flex-end' }}
+    >
+      Back
+    </Button>
+  );
   return (
-    <CardLayout>
+    <CardLayout footer={cardFooter}>
       <View style={styles.container}>
         <Text style={{ marginBottom: 10 }}>Showing results for</Text>
         <Summary
           name={SUMMARY.name}
           price={SUMMARY.price}
           numResults={SUMMARY.numResults}
-        ></Summary>
+        />
         <Text style={{ marginTop: 10, marginBottom: 10 }}>
           Found {RESULT_LIST.length} results
         </Text>
@@ -49,7 +60,7 @@ export default function Results() {
           renderItem={({ item }) => {
             return <Result {...item} />;
           }}
-        ></FlatList>
+        />
       </View>
     </CardLayout>
   );
@@ -60,23 +71,5 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 15,
     alignItems: 'center',
-  },
-  arrow: {
-    height: 15,
-    width: 25,
-    marginLeft: 8,
-  },
-  button: {
-    borderRadius: 20,
-    width: 250,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 30,
-  },
-  buttonContent: {
-    width: 250,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
