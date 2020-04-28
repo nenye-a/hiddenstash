@@ -58,10 +58,6 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     borderRadius: 5,
-    backgroundColor: 'transparent',
-    // May need to remove the following after devleopment and restrict size using iframe container.
-    height: 470,
-    width: 415,
     elevation: 1,
     shadowColor: MEDIUM_LIGHT_GREY,
     shadowOpacity: 0.63,
@@ -86,8 +82,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   content: {
-    overflow: 'scroll',
     marginBottom: 15,
+    backgroundColor: WHITE,
   },
   titleText: {
     color: WHITE,

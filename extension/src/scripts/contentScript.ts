@@ -11,20 +11,20 @@ function main() {
   let isCartOpen = false;
 
   let body = document.querySelector('body');
-  console.log(body, 'BODY');
   if (body) {
     let hiddenstashLogo = chrome.runtime.getURL('hiddenstash-icon.png');
     let iframe = document.createElement('iframe');
     iframe.setAttribute('id', 'hiddenstash-app');
     iframe.setAttribute('class', 'hiddenstash-app');
-    iframe.setAttribute('src', 'https://google.com'); // TODO: change src
+    iframe.setAttribute('frameBorder', '0');
+    iframe.setAttribute('src', 'https://192.168.0.7:19006/'); // TODO: change src
     Object.assign(iframe.style, {
       width: '410px',
       height: '470px',
       position: 'fixed',
       right: '30px',
       bottom: '30px',
-      'z-index': 9999,
+      'z-index': 99999,
     });
 
     let image = document.createElement('img');
@@ -37,7 +37,7 @@ function main() {
       position: 'fixed',
       right: '30px',
       bottom: '30px',
-      'z-index': 9999,
+      'z-index': 99999,
     });
     image.addEventListener('click', (event: MouseEvent) => {
       event.preventDefault();
