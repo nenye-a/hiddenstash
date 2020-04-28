@@ -22,7 +22,16 @@ export let getStashItemController = async (req: Request, res: Response) => {
       where: {
         token: payloadToken,
       },
-      select: { name: true, price: true, result: true },
+      select: {
+        name: true,
+        price: true,
+        result: {
+          select: {
+            url: true,
+            price: true,
+          },
+        },
+      },
     });
     res.send(stashItems);
   } catch {
@@ -62,7 +71,16 @@ export let addStashItemController = async (req: Request, res: Response) => {
           },
         },
       },
-      select: { name: true, price: true, result: true },
+      select: {
+        name: true,
+        price: true,
+        result: {
+          select: {
+            url: true,
+            price: true,
+          },
+        },
+      },
     });
     res.send(stashItem);
   } catch {
