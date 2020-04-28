@@ -2,6 +2,7 @@ node_modules/**/*
 npm-debug.*
 lib/
 coverage/
+*.env
 
 # Prisma
 prisma/.env
