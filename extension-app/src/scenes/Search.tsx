@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, TextInput, Button } from 'exoflex';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
+import { useMutation } from 'react-fetching-library';
 
+import { Form } from '../core-ui';
 import CardLayout from '../components/CardLayout';
 import { GREY } from '../constants/colors';
 
@@ -10,6 +12,20 @@ export default function Search() {
   let [productName, setProductName] = useState('');
   let [price, setPrice] = useState('');
   let history = useHistory();
+
+  let { loading, payload, mutate } = useMutation(({ name, price }) => ({
+    method: 'POST',
+    endpoint: '/stashItem/add',
+    body: {
+      name,
+      price,
+    },
+  }));
+
+  let handleSubmit = async () => {
+    // TODO: validate input
+    mutate({ name: productName, price: Number(price) });
+  };
 
   let cardFooter = (
     <>
@@ -24,25 +40,33 @@ export default function Search() {
       </Button>
       <Button
         onPress={() => {
-          history.push('/results');
+          handleSubmit();
         }}
+        loading={loading}
       >
         Find
       </Button>
     </>
   );
+
+  if (payload) {
+    return <Redirect to={{ pathname: '/results', state: payload }} />;
+  }
+
   return (
     <CardLayout detail={true} footer={cardFooter}>
-      <View style={styles.container}>
-        <Text>Product Name </Text>
-        <TextInput value={productName} onChangeText={setProductName} />
-        <Text>Price </Text>
-        <TextInput
-          value={price}
-          onChangeText={setPrice}
-          containerStyle={{ maxWidth: 120 }}
-        />
-      </View>
+      <Form onSubmit={handleSubmit}>
+        <View style={styles.container}>
+          <Text>Product Name </Text>
+          <TextInput value={productName} onChangeText={setProductName} />
+          <Text>Price </Text>
+          <TextInput
+            value={price}
+            onChangeText={setPrice}
+            containerStyle={{ maxWidth: 120 }}
+          />
+        </View>
+      </Form>
     </CardLayout>
   );
 }

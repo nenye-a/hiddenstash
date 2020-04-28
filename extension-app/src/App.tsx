@@ -9,6 +9,7 @@ import {
 
 import MainRoute from './routes/MainRoute';
 import customTheme from './constants/theme';
+import { API_URL } from './constants/uri';
 
 const requestHostInterceptor = (host: string) => (_client: Client) => async (
   action: Action,
@@ -17,16 +18,15 @@ const requestHostInterceptor = (host: string) => (_client: Client) => async (
   return {
     ...action,
     endpoint: `${host}${action.endpoint}`,
-    ...(token && {
-      headers: {
-        'x-auth-token': token,
-      },
-    }),
+    headers: {
+      ...(token && { 'x-auth-token': token }),
+      'Content-Type': 'application/json',
+    },
   };
 };
 
 const client = createClient({
-  requestInterceptors: [requestHostInterceptor('http://localhost:3000/api/')],
+  requestInterceptors: [requestHostInterceptor(API_URL)],
 });
 
 export default function App() {

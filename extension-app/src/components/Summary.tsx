@@ -6,7 +6,7 @@ import { GREEN, LIGHTER_GREY } from '../constants/colors';
 
 type Props = {
   name: string;
-  price: string;
+  price: number;
   numResults?: number;
 };
 

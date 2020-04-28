@@ -6,7 +6,7 @@ import { useQuery } from 'react-fetching-library';
 
 export default function AuthScene() {
   let { loading, payload } = useQuery({
-    endpoint: 'getToken',
+    endpoint: '/getToken',
     method: 'GET',
   });
   if (loading) {

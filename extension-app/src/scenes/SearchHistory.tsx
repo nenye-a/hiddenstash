@@ -12,7 +12,7 @@ import { WHITE } from '../constants/colors';
 export default function SearchHistory() {
   let history = useHistory();
   let { loading, payload } = useQuery({
-    endpoint: 'stashItem',
+    endpoint: '/stashItem',
     method: 'GET',
   });
 
@@ -41,6 +41,7 @@ export default function SearchHistory() {
         ) : (
           <FlatList
             data={payload}
+            keyExtractor={(item) => item.name.toString()}
             renderItem={({ item }) => {
               let { name, price, numResults } = item;
               return (
