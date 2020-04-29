@@ -97,7 +97,6 @@ function parseGoogleResults(htmlBody) {
     let amount = '';
     try {
       let amount = results[i].querySelector('.dhIWPd.f').rawText; //rating or price
-      let price = extractPrice(amount);
     } catch (e) {
       console.log('could not find google price ' + name);
     }
