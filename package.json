@@ -5,10 +5,6 @@
     "test": "yarn --cwd backend test && yarn --cwd admin test && yarn --cwd extension test && yarn --cwd extension-app test",
     "postinstall": "yarn --cwd backend install && yarn --cwd admin install && yarn --cwd extension install && yarn --cwd extension-app install"
   },
-  "dependencies": {
-    "node-html-parser": "^1.2.16",
-    "request": "^2.88.2"
-  },
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
