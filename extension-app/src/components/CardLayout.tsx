@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   content: {
     paddingBottom: 15,
     backgroundColor: WHITE,
-    // flex: 1,
   },
   titleText: {
     color: WHITE,
