@@ -10,6 +10,8 @@
   "devDependencies": {
     "@types/chrome": "0.0.100",
     "copy-webpack-plugin": "^5.1.1",
+    "eslint": "^6.8.0",
+    "eslint-config-kodefox": "^0.2.2",
     "jest": "^25.1.0",
     "ts-jest": "^25.2.1 ",
     "ts-loader": "^6.2.1",
@@ -17,6 +19,9 @@
     "webpack": "~4.42.0",
     "webpack-cli": "~3.3.11",
     "webpack-merge": "~4.2.2"
+  },
+  "eslintConfig": {
+    "extends": "kodefox"
   },
   "prettier": {
     "singleQuote": true,

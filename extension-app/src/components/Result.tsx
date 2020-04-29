@@ -8,12 +8,12 @@ import Link from '../core-ui/Link';
 type Props = {
   position: number;
   name?: string;
-  price: string;
-  link: string;
+  price: number;
+  url: string;
 };
 
 export default function Result(props: Props) {
-  let { name, price, position, link } = props;
+  let { name, price, position, url } = props;
   return (
     <View style={styles.container}>
       {/* a tag here for alignment purposes with link. */}
@@ -21,8 +21,8 @@ export default function Result(props: Props) {
         {position}.
       </Text>
       <View style={styles.content}>
-        <Link to={link}>
-          <Text style={{ color: LINK_COLOR }}>{name ? name : link}</Text>
+        <Link to={url}>
+          <Text style={{ color: LINK_COLOR }}>{name ? name : url}</Text>
         </Link>
         <Text weight="bold" style={{ marginTop: 5 }}>
           {price}

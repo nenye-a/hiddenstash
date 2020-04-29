@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import prisma from './prisma';
 import APIRoutes from './routes/api';
@@ -10,6 +11,7 @@ const port = 3000;
 const server = express();
 
 export default function setupMiddleware(app: Application) {
+  app.use(cors()); // TODO: add specific url
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 }

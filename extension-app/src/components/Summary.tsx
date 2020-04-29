@@ -1,19 +1,32 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from 'exoflex';
+import { useHistory } from 'react-router-dom';
 
 import { GREEN, LIGHTER_GREY } from '../constants/colors';
+import { SearchRecommendation } from '../types/types';
 
 type Props = {
   name: string;
-  price: string;
-  numResults?: number;
+  price: number;
+  result: Array<SearchRecommendation>;
 };
 
 export default function Summary(props: Props) {
-  let { name, price, numResults } = props;
+  let { name, price, result } = props;
+  let history = useHistory();
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        history.push('/results', {
+          name,
+          price,
+          result,
+        });
+      }}
+    >
       <View style={styles.titleContainer}>
         <Text weight="bold">{name}</Text>
       </View>
@@ -23,10 +36,10 @@ export default function Summary(props: Props) {
         </Text>
         <View style={styles.resultContainer}>
           <Text weight="bold">Results:</Text>
-          <Text style={{ marginLeft: 5 }}>{numResults}</Text>
+          <Text style={{ marginLeft: 5 }}>{result.length}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

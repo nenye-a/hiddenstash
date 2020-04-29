@@ -6,37 +6,15 @@ import { useHistory } from 'react-router-dom';
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
 import Result from '../components/Result';
-
-const RESULT_LIST = [
-  {
-    position: 1,
-    name: 'Old product name, limited in chars to fit in the modal',
-    link:
-      'https://www.amazon.com/Yomega-Raider-Responsive-Designed-Advanced/dp/B07KRL7GTR/ref=sr_1_1_sspa?dchild=1&keywords=yoyo&qid=1587943423&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExU002WEdKVFA0R0xMJmVuY3J5cHRlZElkPUEwMzExOTAxMVM1Q1oyT0JONUlKUyZlbmNyeXB0ZWRBZElkPUEwNTUwNTYwWlBFTzQ3RzVMTUZIJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==',
-    price: '$10',
-  },
-  {
-    position: 2,
-    name: 'Old product name, limited in chars to fit in the modal',
-    link:
-      'https://www.amazon.com/Yomega-Raider-Responsive-Designed-Advanced/dp/B07KRL7GTR/ref=sr_1_1_sspa?dchild=1&keywords=yoyo&qid=1587943423&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExU002WEdKVFA0R0xMJmVuY3J5cHRlZElkPUEwMzExOTAxMVM1Q1oyT0JONUlKUyZlbmNyeXB0ZWRBZElkPUEwNTUwNTYwWlBFTzQ3RzVMTUZIJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==',
-    price: '$10',
-  },
-];
-
-const SUMMARY = {
-  name: 'Old product name, limited in chars to fit in the modal',
-  price: '$9.99',
-  numResults: 10,
-};
+import { SearchResult } from '../types/types';
 
 export default function Results() {
-  let history = useHistory();
-
+  let history = useHistory<SearchResult>();
+  let data = history.location.state;
   let cardFooter = (
     <Button
       onPress={() => {
-        history.push('/search');
+        history.goBack();
       }}
       style={{ alignSelf: 'flex-end' }}
     >
@@ -47,18 +25,15 @@ export default function Results() {
     <CardLayout footer={cardFooter}>
       <View style={styles.container}>
         <Text style={{ marginBottom: 10 }}>Showing results for</Text>
-        <Summary
-          name={SUMMARY.name}
-          price={SUMMARY.price}
-          numResults={SUMMARY.numResults}
-        />
+        <Summary name={data.name} price={data.price} result={data.result} />
         <Text style={{ marginTop: 10, marginBottom: 10 }}>
-          Found {RESULT_LIST.length} results
+          Found {data.result.length} results
         </Text>
         <FlatList
-          data={RESULT_LIST}
-          renderItem={({ item }) => {
-            return <Result {...item} />;
+          keyExtractor={(_item, index) => index.toString()}
+          data={data.result}
+          renderItem={({ item, index }) => {
+            return <Result position={index + 1} name={data.name} {...item} />;
           }}
         />
       </View>

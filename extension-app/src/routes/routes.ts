@@ -1,6 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 
-import { Home, Results, Search } from '../scenes';
+import { AuthScene, Home, Results, Search } from '../scenes';
 
 export let MAIN_ROUTES: Array<RouteProps> = [
   {
@@ -16,4 +16,5 @@ export let MAIN_ROUTES: Array<RouteProps> = [
     path: '/search',
     component: Search,
   },
+  { path: '/auth', component: AuthScene },
 ];
