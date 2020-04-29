@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.63,
     shadowOffset: { height: 0, width: 0 },
     shadowRadius: 10,
+    flex: 1,
   },
   titleContainer: {
     minHeight: 55,

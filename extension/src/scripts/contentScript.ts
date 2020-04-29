@@ -20,7 +20,7 @@ function main() {
     iframe.setAttribute('src', 'https://192.168.0.7:19006/'); // TODO: change src
     Object.assign(iframe.style, {
       width: '410px',
-      height: '450px',
+      height: '470px',
       position: 'fixed',
       right: '30px',
       bottom: '30px',
