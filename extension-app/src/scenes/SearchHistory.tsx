@@ -12,11 +12,11 @@ import { SearchResult } from '../types/types';
 
 export default function SearchHistory() {
   let history = useHistory();
-  let { loading, payload } = useQuery<SearchResult>({
+  let { loading, payload } = useQuery<Array<SearchResult>>({
     endpoint: '/stashItem',
     method: 'GET',
   });
-  console.log(payload);
+
   return (
     <CardLayout detail>
       <View style={styles.container}>
@@ -39,7 +39,7 @@ export default function SearchHistory() {
         <Text style={styles.bottomMargin}>Previous Searches</Text>
         {loading ? (
           <ActivityIndicator />
-        ) : (
+        ) : payload ? (
           <FlatList
             data={payload}
             keyExtractor={(item) => item.name.toString()}
@@ -53,6 +53,9 @@ export default function SearchHistory() {
               </View>
             )}
           />
+        ) : (
+          // TODO: return error component
+          <View />
         )}
       </View>
     </CardLayout>
