@@ -7,16 +7,19 @@ import { useMutation } from 'react-fetching-library';
 import { Form } from '../core-ui';
 import CardLayout from '../components/CardLayout';
 import { GREY } from '../constants/colors';
-
 import { productLookup } from '../search/lookup';
+import { SearchResult, AddStashItemVariables } from '../types/types';
 
 export default function Search() {
-  let id: string = Date.now().toString(); // TODO: use in management of product state
   let [productName, setProductName] = useState('');
   let [price, setPrice] = useState('');
   let history = useHistory();
 
-  let { loading, payload, mutate } = useMutation(({ name, price }) => ({
+  let { loading, payload, mutate } = useMutation<
+    SearchResult,
+    {},
+    AddStashItemVariables
+  >(({ name, price }) => ({
     method: 'POST',
     endpoint: '/stashItem/add',
     body: {
@@ -27,7 +30,12 @@ export default function Search() {
 
   let handleSubmit = async () => {
     // TODO: validate input
-    mutate({ name: productName, price: Number(price) });
+
+    mutate({
+      name: productName,
+      price: Number(price),
+      source: window.location.ancestorOrigins[0],
+    });
   };
 
   let cardFooter = (

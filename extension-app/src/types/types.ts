@@ -12,3 +12,9 @@ export type SearchResult = {
   price: number;
   result: Array<SearchRecommendation>;
 };
+
+export type AddStashItemVariables = {
+  name: string;
+  price: number;
+  source: string;
+};
