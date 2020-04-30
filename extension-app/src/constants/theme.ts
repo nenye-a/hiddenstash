@@ -52,7 +52,11 @@ let customTheme = {
       containerStyle: {
         maxHeight: 40,
         height: 40,
-        marginBottom: 20,
+        marginBottom: 10,
+      },
+      errorMessageStyle: {
+        padding: 0,
+        marginBottom: 10,
       },
     },
   },
