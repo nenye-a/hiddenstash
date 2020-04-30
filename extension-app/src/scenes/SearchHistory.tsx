@@ -7,12 +7,14 @@ import { useQuery } from 'react-fetching-library';
 import styledArrow from '../../assets/styled-arrow.svg';
 import CardLayout from '../components/CardLayout';
 import Summary from '../components/Summary';
+import ErrorComponent from '../components/ErrorComponent';
+import EmptyDataComponent from '../components/EmptyDataComponent';
 import { WHITE } from '../constants/colors';
 import { SearchResult } from '../types/types';
 
 export default function SearchHistory() {
   let history = useHistory();
-  let { loading, payload } = useQuery<Array<SearchResult>>({
+  let { loading, payload, query } = useQuery<Array<SearchResult>>({
     endpoint: '/stashItem',
     method: 'GET',
   });
@@ -47,15 +49,10 @@ export default function SearchHistory() {
               let { name, price, result } = item;
               return <Summary name={name} price={price} result={result} />;
             }}
-            ListEmptyComponent={() => (
-              <View>
-                <Text>No Data Found</Text>
-              </View>
-            )}
+            ListEmptyComponent={EmptyDataComponent}
           />
         ) : (
-          // TODO: return error component
-          <View />
+          <ErrorComponent onRetry={query} />
         )}
       </View>
     </CardLayout>

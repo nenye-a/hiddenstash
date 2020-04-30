@@ -1,13 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
 import { ActivityIndicator } from 'exoflex';
 import { Redirect } from 'react-router-dom';
 import { useQuery } from 'react-fetching-library';
 
 import { GetToken } from '../types/types';
+import ErrorComponent from '../components/ErrorComponent';
 
 export default function AuthScene() {
-  let { loading, payload } = useQuery<GetToken>({
+  let { loading, payload, query } = useQuery<GetToken>({
     endpoint: '/getToken',
     method: 'GET',
   });
@@ -17,6 +17,5 @@ export default function AuthScene() {
     window.localStorage.setItem('hiddenstash-token', payload.token);
     return <Redirect to="/" />;
   }
-  // TODO: return error component
-  return <View />;
+  return <ErrorComponent onRetry={query} />;
 }
