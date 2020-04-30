@@ -22,7 +22,7 @@ export default function Result(props: Props) {
       </Text>
       <View style={styles.content}>
         <Link to={url}>
-          <Text style={{ color: LINK_COLOR }}>{url ? url : name}</Text>
+          <Text style={{ color: LINK_COLOR }}>{name ? name : url}</Text>
         </Link>
         <Text weight="bold" style={{ marginTop: 5 }}>
           {price}
