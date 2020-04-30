@@ -6,7 +6,7 @@ import prisma from './prisma';
 import APIRoutes from './routes/api';
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = ((process.env.PORT as unknown) as number) || 3000;
 
 const server = express();
 
