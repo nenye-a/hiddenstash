@@ -35,6 +35,10 @@ export default function Results() {
           renderItem={({ item, index }) => {
             return <Result position={index + 1} {...item} />;
           }}
+          contentContainerStyle={{
+            overflow: 'hidden',
+            borderRadius: 5,
+          }}
         />
       </View>
     </CardLayout>
