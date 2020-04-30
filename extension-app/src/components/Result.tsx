@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   priceContainer: {
     width: 80,
     marginLeft: 5,
-    backgroundColor: 'red',
   },
   price: { marginTop: 5, textAlign: 'right' },
   flex: {
