@@ -7,27 +7,35 @@ import { useMutation } from 'react-fetching-library';
 import { Form } from '../core-ui';
 import CardLayout from '../components/CardLayout';
 import { GREY } from '../constants/colors';
-
-import { productLookup } from '../search/lookup';
+import { SearchResult, AddStashItemVariables } from '../types/types';
 
 export default function Search() {
-  let id: string = Date.now().toString(); // TODO: use in management of product state
   let [productName, setProductName] = useState('');
   let [price, setPrice] = useState('');
   let history = useHistory();
 
-  let { loading, payload, mutate } = useMutation(({ name, price }) => ({
+  let { loading, payload, mutate } = useMutation<
+    SearchResult,
+    {},
+    AddStashItemVariables
+  >(({ name, price, source }) => ({
     method: 'POST',
     endpoint: '/stashItem/add',
     body: {
       name,
       price,
+      source,
     },
   }));
 
   let handleSubmit = async () => {
     // TODO: validate input
-    mutate({ name: productName, price: Number(price) });
+
+    mutate({
+      name: productName.trim(),
+      price: Number(price),
+      source: window.location.ancestorOrigins[0],
+    });
   };
 
   let cardFooter = (
@@ -83,11 +91,3 @@ const styles = StyleSheet.create({
     color: GREY,
   },
 });
-
-const handleSubmit = (id: string, product: string, price: string) => {
-  let source = 'https://www.amazon.com/';
-  let searchQuery = { id, product, source, price };
-  console.log(searchQuery);
-  productLookup(searchQuery);
-  // TODO: needs to use productLookup to generate search and return results.
-};

@@ -42,7 +42,7 @@ export default function SearchHistory() {
         ) : payload ? (
           <FlatList
             data={payload}
-            keyExtractor={(item) => item.name.toString()}
+            keyExtractor={(item, index) => item.name + index.toString()}
             renderItem={({ item }) => {
               let { name, price, result } = item;
               return <Summary name={name} price={price} result={result} />;

@@ -1,18 +1,20 @@
 const JSON_PREFIX = '$#';
 const SEPARATOR = ':';
 
+type Result = {
+  name: string;
+  description: string;
+  price: string;
+  amount: string;
+  url: string;
+};
+
 type State = {
   searchQuery: {
     product: string;
     source: string;
     price: string;
-    results?: {
-      name: string;
-      description: string;
-      price: string;
-      amount: string;
-      link: string;
-    }[];
+    results?: Array<Result>;
   };
 };
 

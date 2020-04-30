@@ -8,7 +8,7 @@ import Link from '../core-ui/Link';
 type Props = {
   position: number;
   name?: string;
-  price: number;
+  price: string;
   url: string;
 };
 
@@ -22,7 +22,7 @@ export default function Result(props: Props) {
       </Text>
       <View style={styles.content}>
         <Link to={url}>
-          <Text style={{ color: LINK_COLOR }}>{name ? name : url}</Text>
+          <Text style={{ color: LINK_COLOR }}>{url ? url : name}</Text>
         </Link>
         <Text weight="bold" style={{ marginTop: 5 }}>
           {price}
