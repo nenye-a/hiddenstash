@@ -10,8 +10,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "jest": "jest --coverage --passWithNoTests",
-    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest",
-    "postinstall": "yarn generate && yarn build"
+    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"
   },
   "dependencies": {
     "@prisma/client": "^2.0.0-beta.3",
