@@ -28,12 +28,7 @@ export let getStashItemController = async (req: Request, res: Response) => {
       select: {
         name: true,
         price: true,
-        result: {
-          select: {
-            url: true,
-            price: true,
-          },
-        },
+        result: true,
       },
     });
     res.send(stashItems);
@@ -80,12 +75,7 @@ export let addStashItemController = async (req: Request, res: Response) => {
       select: {
         name: true,
         price: true,
-        result: {
-          select: {
-            url: true,
-            price: true,
-          },
-        },
+        result: true,
       },
     });
     res.send(stashItem);

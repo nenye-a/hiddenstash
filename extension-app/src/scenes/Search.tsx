@@ -36,12 +36,13 @@ export default function Search() {
     let isProductEmpty = productName === '';
     let isPriceEmpty = price === '';
     let allInputNotEmpty = !(isProductEmpty || isPriceEmpty);
-    let isPriceValid = !isNaN(Number(price)) && Number(price) > 0;
+    let priceNumber = price.includes('$') ? price.replace('$', '') : price;
+    let isPriceValid = !isNaN(Number(priceNumber)) && Number(priceNumber) > 0;
     let allInputValid = allInputNotEmpty && isPriceValid;
     if (allInputValid) {
       mutate({
         name: productName.trim(),
-        price: Number(price),
+        price: Number(priceNumber),
         source: window.location.ancestorOrigins[0] || window.location.href,
       });
     } else {

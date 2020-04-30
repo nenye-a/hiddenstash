@@ -56,8 +56,8 @@ function parseGoogleResults(htmlBody: ParseResult) {
     let name = result?.querySelector('.LC20lb.DKV0Md')?.rawText || '';
     let url = result?.querySelector('a').getAttribute('href') || '';
     let description = result?.querySelector('.st')?.rawText || '';
-    let price = ''; // TODO: get price
     let amount = result.querySelector('.dhIWPd.f')?.rawText || '';
+    let price = getPriceFromText(amount);
 
     sites.push({
       name,
@@ -104,4 +104,20 @@ function getDomain(url: string) {
   let regex = /(?:[\w-]+\.)+[\w-]+/;
   let domain = regex.exec(url);
   return domain ? domain[0] : '';
+}
+
+/**
+ *
+ * This method takes a string and returns the prices listed, separated by comma
+ *
+ * @param link
+ */
+
+function getPriceFromText(text: string) {
+  let textMatches = text.match(/(\$\d+\.\d{1,2})/g);
+  if (textMatches && textMatches.length > 0) {
+    let price = textMatches[0];
+    return parseFloat(price).toString().replace('$', '');
+  }
+  return '';
 }

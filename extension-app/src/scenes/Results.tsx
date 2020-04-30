@@ -33,7 +33,11 @@ export default function Results() {
           keyExtractor={(_item, index) => index.toString()}
           data={data.result}
           renderItem={({ item, index }) => {
-            return <Result position={index + 1} name={data.name} {...item} />;
+            return <Result position={index + 1} {...item} />;
+          }}
+          contentContainerStyle={{
+            overflow: 'hidden',
+            borderRadius: 5,
           }}
         />
       </View>
