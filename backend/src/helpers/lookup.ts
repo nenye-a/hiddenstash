@@ -53,10 +53,10 @@ function parseGoogleResults(htmlBody: ParseResult) {
   let sites: Array<Result> = [];
 
   results.forEach((result: HTMLElement) => {
-    let name: string = result?.querySelector('.LC20lb.DKV0Md')?.rawText || '';
-    let url = result.querySelector('a').getAttribute('href') || '';
-    let description: string = result?.querySelector('.st')?.rawText || '';
-    let price = '';
+    let name = result?.querySelector('.LC20lb.DKV0Md')?.rawText || '';
+    let url = result?.querySelector('a').getAttribute('href') || '';
+    let description = result?.querySelector('.st')?.rawText || '';
+    let price = ''; // TODO: get price
     let amount = result.querySelector('.dhIWPd.f')?.rawText || '';
 
     sites.push({
