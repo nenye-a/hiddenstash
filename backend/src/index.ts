@@ -5,8 +5,9 @@ import cors from 'cors';
 import prisma from './prisma';
 import APIRoutes from './routes/api';
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname =
+  process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1';
+const port = ((process.env.PORT as unknown) as number) || 3000;
 
 const server = express();
 
