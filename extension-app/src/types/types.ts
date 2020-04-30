@@ -4,7 +4,7 @@ export type GetToken = {
 
 export type SearchRecommendation = {
   url: string;
-  price: number;
+  price: string;
 };
 
 export type SearchResult = {

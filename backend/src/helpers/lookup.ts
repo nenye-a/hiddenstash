@@ -12,7 +12,7 @@ type Result = {
   description: string;
   price: string;
   amount: string;
-  link: string;
+  url: string;
 };
 
 type ParseResult = HTMLElement & {
@@ -42,7 +42,7 @@ export async function productLookup(query: SearchQuery) {
 /**
  *
  * Method parses initial google HTML into a list of JSON objects
- * that include {name, link, description, and price/rating} for
+ * that include {name, url, description, and price/rating} for
  * each search result
  *
  * @param htmlBody
@@ -54,14 +54,14 @@ function parseGoogleResults(htmlBody: ParseResult) {
 
   results.forEach((result: HTMLElement) => {
     let name: string = result?.querySelector('.LC20lb.DKV0Md')?.rawText || '';
-    let link = result.querySelector('a').getAttribute('href') || '';
+    let url = result.querySelector('a').getAttribute('href') || '';
     let description: string = result?.querySelector('.st')?.rawText || '';
     let price = '';
     let amount = result.querySelector('.dhIWPd.f')?.rawText || '';
 
     sites.push({
       name,
-      link,
+      url,
       description,
       amount,
       price,
@@ -84,7 +84,7 @@ function filterResults(source: string, results: Array<Result>) {
 
   for (let result of results) {
     //remove results that are from the same domain
-    let linkDomain = getDomain(result.link);
+    let linkDomain = getDomain(result.url);
     if (linkDomain !== sourceDomain) {
       filteredResults.push(result);
     }
@@ -100,8 +100,8 @@ function filterResults(source: string, results: Array<Result>) {
  * @param link
  */
 
-function getDomain(link: string) {
+function getDomain(url: string) {
   let regex = /(?:[\w-]+\.)+[\w-]+/;
-  let domain = regex.exec(link);
+  let domain = regex.exec(url);
   return domain ? domain[0] : '';
 }

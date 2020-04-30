@@ -8,7 +8,7 @@ import Link from '../core-ui/Link';
 type Props = {
   position: number;
   name?: string;
-  price: number;
+  price: string;
   url: string;
 };
 

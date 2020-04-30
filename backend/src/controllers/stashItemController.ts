@@ -61,36 +61,34 @@ export let addStashItemController = async (req: Request, res: Response) => {
       return;
     }
     let payloadToken = jwt.verify(String(requestToken), API_SECRET);
-    let productRecommendation = productLookup({
+    let productRecommendation = await productLookup({
       name: requestBody.name,
       price: requestBody.price,
       source: 'https://amazon.com',
     });
+    console.log(productRecommendation);
 
-    // let stashItem = await prisma.stashItem.create({
-    //   data: {
-    //     name: requestBody.name,
-    //     price: requestBody.price,
-    //     token: payloadToken.toString(),
-    //     result: {
-    //       create: {
-    //         price: 10,
-    //         url: 'google.com',
-    //       },
-    //     },
-    //   },
-    //   select: {
-    //     name: true,
-    //     price: true,
-    //     result: {
-    //       select: {
-    //         url: true,
-    //         price: true,
-    //       },
-    //     },
-    //   },
-    // });
-    // res.send(stashItem);
+    let stashItem = await prisma.stashItem.create({
+      data: {
+        name: requestBody.name,
+        price: requestBody.price,
+        token: payloadToken.toString(),
+        result: {
+          create: productRecommendation,
+        },
+      },
+      select: {
+        name: true,
+        price: true,
+        result: {
+          select: {
+            url: true,
+            price: true,
+          },
+        },
+      },
+    });
+    res.send(stashItem);
   } catch {
     res.status(SERVER_BAD_REQUEST).json({
       ...BAD_REQUEST,
