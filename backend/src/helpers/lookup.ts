@@ -71,25 +71,36 @@ function parseGoogleResults(htmlBody: ParseResult) {
   return sites;
 }
 
+/**
+ *
+ * This method filters the parsed list of google results
+ * to return items are not available from the source site
+ *
+ */
 function filterResults(source: string, results: Array<Result>) {
-  //This method filters the parsed list of google results to return items are not available from the source site
-
   let sourceDomain = getDomain(source);
   let filteredResults = [];
   //TODO: decide if we want unique domain results only
-  for (let i = 0; i < results.length; i++) {
+
+  for (let result of results) {
     //remove results that are from the same domain
-    let linkDomain = getDomain(results[i].link);
+    let linkDomain = getDomain(result.link);
     if (linkDomain !== sourceDomain) {
-      filteredResults.push(results[i]);
+      filteredResults.push(result);
     }
     //TODO: search sites and find missing prices, remove non-priced items from search results
   }
   return filteredResults;
 }
 
+/**
+ *
+ * This function takes a website string and returns the site's domain
+ *
+ * @param link
+ */
+
 function getDomain(link: string) {
-  //this function takes a website string and returns the site's domain
   let regex = /(?:[\w-]+\.)+[\w-]+/;
   let domain = regex.exec(link);
   return domain ? domain[0] : '';
