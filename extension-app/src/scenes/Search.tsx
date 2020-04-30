@@ -12,6 +12,10 @@ import { SearchResult, AddStashItemVariables } from '../types/types';
 export default function Search() {
   let [productName, setProductName] = useState('');
   let [price, setPrice] = useState('');
+  let [error, setError] = useState({
+    productName: '',
+    price: '',
+  });
   let history = useHistory();
 
   let { loading, payload, mutate } = useMutation<
@@ -28,14 +32,34 @@ export default function Search() {
     },
   }));
 
-  let handleSubmit = async () => {
-    // TODO: validate input
+  let validate = () => {
+    let isProductEmpty = productName === '';
+    let isPriceEmpty = price === '';
+    let allInputNotEmpty = !(isProductEmpty || isPriceEmpty);
+    let isPriceValid = validateNumber(price);
+    let allInputValid = allInputNotEmpty && isPriceValid;
+    if (allInputValid) {
+      mutate({
+        name: productName.trim(),
+        price: Number(price),
+        source: window.location.ancestorOrigins[0],
+      });
+    }
 
-    mutate({
-      name: productName.trim(),
-      price: Number(price),
-      source: window.location.ancestorOrigins[0],
+    let productError = isProductEmpty ? 'Please fill in product name' : '';
+    let priceError = isPriceEmpty
+      ? 'Please fill in the price'
+      : !isPriceValid
+      ? 'Invalid price'
+      : '';
+    setError({
+      productName: productError,
+      price: priceError,
     });
+  };
+
+  let handleSubmit = () => {
+    validate();
   };
 
   let cardFooter = (
@@ -69,12 +93,17 @@ export default function Search() {
       <Form onSubmit={handleSubmit}>
         <View style={styles.container}>
           <Text>Product Name </Text>
-          <TextInput value={productName} onChangeText={setProductName} />
+          <TextInput
+            value={productName}
+            onChangeText={setProductName}
+            errorMessage={error.productName}
+          />
           <Text>Price </Text>
           <TextInput
             value={price}
             onChangeText={setPrice}
             containerStyle={{ maxWidth: 120 }}
+            errorMessage={error.price}
           />
         </View>
       </Form>
