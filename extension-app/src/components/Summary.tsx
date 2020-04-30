@@ -8,7 +8,7 @@ import { SearchRecommendation } from '../types/types';
 
 type Props = {
   name: string;
-  price: number;
+  price: string;
   result: Array<SearchRecommendation>;
 };
 

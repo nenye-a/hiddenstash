@@ -9,7 +9,7 @@ export type SearchRecommendation = {
 
 export type SearchResult = Error & {
   name: string;
-  price: number;
+  price: string;
   result: Array<SearchRecommendation>;
 };
 

@@ -71,7 +71,7 @@ export let addStashItemController = async (req: Request, res: Response) => {
     let stashItem = await prisma.stashItem.create({
       data: {
         name: requestBody.name,
-        price: requestBody.price,
+        price: '$' + requestBody.price.toString(),
         token: payloadToken.toString(),
         result: {
           create: productRecommendation,
