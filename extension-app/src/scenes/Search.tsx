@@ -8,6 +8,7 @@ import { Form } from '../core-ui';
 import CardLayout from '../components/CardLayout';
 import { GREY } from '../constants/colors';
 import { SearchResult, AddStashItemVariables } from '../types/types';
+import validateNumber from '../helpers/validateNumber';
 
 export default function Search() {
   let [productName, setProductName] = useState('');
