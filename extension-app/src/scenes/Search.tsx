@@ -8,7 +8,6 @@ import { Form } from '../core-ui';
 import CardLayout from '../components/CardLayout';
 import { GREY } from '../constants/colors';
 import { SearchResult, AddStashItemVariables } from '../types/types';
-import validateNumber from '../helpers/validateNumber';
 
 export default function Search() {
   let [productName, setProductName] = useState('');
@@ -37,26 +36,26 @@ export default function Search() {
     let isProductEmpty = productName === '';
     let isPriceEmpty = price === '';
     let allInputNotEmpty = !(isProductEmpty || isPriceEmpty);
-    let isPriceValid = validateNumber(price);
+    let isPriceValid = !isNaN(Number(price)) && Number(price) > 0;
     let allInputValid = allInputNotEmpty && isPriceValid;
     if (allInputValid) {
       mutate({
         name: productName.trim(),
         price: Number(price),
-        source: window.location.ancestorOrigins[0],
+        source: window.location.ancestorOrigins[0] || window.location.href,
+      });
+    } else {
+      let productError = isProductEmpty ? 'Please fill in product name' : '';
+      let priceError = isPriceEmpty
+        ? 'Please fill in the price'
+        : !isPriceValid
+        ? 'Invalid price'
+        : '';
+      setError({
+        productName: productError,
+        price: priceError,
       });
     }
-
-    let productError = isProductEmpty ? 'Please fill in product name' : '';
-    let priceError = isPriceEmpty
-      ? 'Please fill in the price'
-      : !isPriceValid
-      ? 'Invalid price'
-      : '';
-    setError({
-      productName: productError,
-      price: priceError,
-    });
   };
 
   let handleSubmit = () => {
@@ -85,7 +84,7 @@ export default function Search() {
     </>
   );
 
-  if (payload) {
+  if (payload?.result) {
     return <Redirect to={{ pathname: '/results', state: payload }} />;
   }
 
