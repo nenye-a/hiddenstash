@@ -7,7 +7,7 @@ export type SearchRecommendation = {
   price: string;
 };
 
-export type SearchResult = {
+export type SearchResult = Error & {
   name: string;
   price: number;
   result: Array<SearchRecommendation>;
@@ -17,4 +17,9 @@ export type AddStashItemVariables = {
   name: string;
   price: number;
   source: string;
+};
+
+export type Error = {
+  success?: boolean;
+  message?: string;
 };

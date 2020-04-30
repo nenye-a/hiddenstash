@@ -18,12 +18,13 @@ export default function Search() {
     SearchResult,
     {},
     AddStashItemVariables
-  >(({ name, price }) => ({
+  >(({ name, price, source }) => ({
     method: 'POST',
     endpoint: '/stashItem/add',
     body: {
       name,
       price,
+      source,
     },
   }));
 
@@ -31,7 +32,7 @@ export default function Search() {
     // TODO: validate input
 
     mutate({
-      name: productName,
+      name: productName.trim(),
       price: Number(price),
       source: window.location.ancestorOrigins[0],
     });

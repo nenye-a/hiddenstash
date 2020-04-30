@@ -8,6 +8,7 @@ import { productLookup } from '../helpers/lookup';
 type RequestBodyStashItem = {
   name?: string;
   price?: number;
+  source?: string;
 };
 
 export let getStashItemController = async (req: Request, res: Response) => {
@@ -54,7 +55,7 @@ export let addStashItemController = async (req: Request, res: Response) => {
       return;
     }
     let requestBody: RequestBodyStashItem = req.body;
-    if (!requestBody.name || !requestBody.price) {
+    if (!requestBody.name || !requestBody.price || !requestBody.source) {
       res.status(SERVER_BAD_REQUEST).json({
         ...BAD_REQUEST,
       });
@@ -64,9 +65,8 @@ export let addStashItemController = async (req: Request, res: Response) => {
     let productRecommendation = await productLookup({
       name: requestBody.name,
       price: requestBody.price,
-      source: 'https://amazon.com',
+      source: requestBody.source,
     });
-    console.log(productRecommendation);
 
     let stashItem = await prisma.stashItem.create({
       data: {
