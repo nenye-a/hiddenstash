@@ -2,19 +2,14 @@
   "manifest_version": 2,
   "name": "HiddenStash Chrome Extension",
   "description": "",
-  "version": "1.0",
+  "version": "0.0.1",
   "browser_action": {
-    "default_icon": "./hiddenstash-icon.png",
-    "default_popup": "./popup.html"
+    "default_icon": "./hiddenstash-icon.png"
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["js/contentScript.js"]
-    },
-    {
-      "matches": ["https://*.amazon.com/*"],
-      "js": ["js/amazonContentScript.js"]
     }
   ],
   "permissions": ["storage", "<all_urls>"],
