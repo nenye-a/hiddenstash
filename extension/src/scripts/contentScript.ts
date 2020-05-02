@@ -1,3 +1,5 @@
+import { APP_URI } from '../constants/uri';
+
 if (
   document.readyState === 'interactive' ||
   document.readyState === 'complete'
@@ -17,7 +19,7 @@ function main() {
     iframe.setAttribute('id', 'hiddenstash-app');
     iframe.setAttribute('class', 'hiddenstash-app');
     iframe.setAttribute('frameBorder', '0');
-    iframe.setAttribute('src', 'https://192.168.0.7:19006/'); // TODO: change src
+    iframe.setAttribute('src', APP_URI);
     Object.assign(iframe.style, {
       width: '410px',
       height: '470px',
