@@ -1,4 +1,4 @@
-# Hidden Stash Repo (Production)
+# Hidden Stash Repo
 
 ### Hosted applications
 
