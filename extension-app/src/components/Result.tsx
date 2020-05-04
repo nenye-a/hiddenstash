@@ -10,6 +10,7 @@ import {
 } from '../constants/colors';
 import Link from '../core-ui/Link';
 import { FONT_SIZE_SMALL } from '../constants/sizes';
+import getDomain from '../utils/getDomain';
 
 type Props = {
   name?: string;
@@ -41,14 +42,13 @@ export default function Result(props: Props) {
             {name ? name : url}
           </Text>
         </Link>
-
         <View style={[styles.row, styles.middleTexts]}>
           <Text style={styles.smallFont} weight="bold">
             {price || 'Price N/A'}
           </Text>
           <Text style={[styles.smallFont, styles.horizontalMargin]}>•</Text>
           <Text weight="medium" style={[styles.smallFont, styles.mutedText]}>
-            {'www.ebay.com'}
+            {getDomain(url)}
           </Text>
         </View>
         <Text
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     width: 388,
     height: 108,
     backgroundColor: LIGHTEST_GREY,
-    marginVertical: 2,
+    marginVertical: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
