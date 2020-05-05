@@ -28,7 +28,9 @@ export default function Summary(props: Props) {
       }}
     >
       <View style={styles.titleContainer}>
-        <Text weight="bold">{name}</Text>
+        <Text weight="bold" numberOfLines={2}>
+          {name}
+        </Text>
       </View>
       <View style={styles.content}>
         <Text weight="bold" style={{ color: GREEN }}>
