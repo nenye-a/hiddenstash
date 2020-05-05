@@ -13,6 +13,7 @@ type Result = {
   price: string;
   amount: string;
   url: string;
+  imgUrl?: string;
 };
 
 type ParseResult = HTMLElement & {
