@@ -30,6 +30,6 @@ model StashItem {
   name   String
   price  String
   imgUrl String?
-  source String
+  source String   @default("")
   result Result[]
 }

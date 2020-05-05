@@ -39,6 +39,31 @@
       "field": "source",
       "type": "String",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "StashItem",
+          "field": "source"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "StashItem",
+          "field": "source"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "\"\""
     }
   ]
 }
