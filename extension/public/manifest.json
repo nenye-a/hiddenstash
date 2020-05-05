@@ -9,7 +9,6 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.amazon.com/*",
         "https://www.ebay.com/*",
         "https://www.walmart.com/*",
         "https://www.etsy.com/*",
@@ -20,17 +19,13 @@
         "https://www.macys.com/*",
         "https://www.lowes.com/*"
       ],
-      "js": [
-        "js/contentScript.js"
-      ]
+      "js": ["js/contentScript.js"]
+    },
+    {
+      "matches": ["https://www.amazon.com/*"],
+      "js": ["js/contentScript.js", "js/amazonContentScript.js"]
     }
   ],
-  "permissions": [
-    "storage",
-    "activeTab"
-  ],
-  "web_accessible_resources": [
-    "*.png",
-    "*.svg"
-  ]
+  "permissions": ["storage", "activeTab"],
+  "web_accessible_resources": ["*.png", "*.svg"]
 }
