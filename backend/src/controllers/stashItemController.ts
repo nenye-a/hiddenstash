@@ -9,6 +9,7 @@ type RequestBodyStashItem = {
   name?: string;
   price?: number;
   source?: string;
+  imgUrl?: string;
 };
 
 export let getStashItemController = async (req: Request, res: Response) => {
@@ -29,6 +30,7 @@ export let getStashItemController = async (req: Request, res: Response) => {
         name: true,
         price: true,
         result: true,
+        imgUrl: true,
       },
     });
     res.send(stashItems);
@@ -71,11 +73,14 @@ export let addStashItemController = async (req: Request, res: Response) => {
         result: {
           create: productRecommendation,
         },
+        source: requestBody.source,
+        imgUrl: requestBody.imgUrl,
       },
       select: {
         name: true,
         price: true,
         result: true,
+        imgUrl: true,
       },
     });
     res.send(stashItem);
