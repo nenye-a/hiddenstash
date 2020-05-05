@@ -3,10 +3,13 @@
   "scripts": {
     "dev": "concurrently --kill-others \"yarn --cwd backend dev\" \"yarn --cwd admin start\" \"yarn --cwd extension dev\" \"yarn --cwd extension-app start\"",
     "test": "yarn --cwd backend test && yarn --cwd admin test && yarn --cwd extension test && yarn --cwd extension-app test",
-    "postinstall": "yarn --cwd backend install && yarn --cwd admin install && yarn --cwd extension install && yarn --cwd extension-app install"
+    "postinstall": "yarn --cwd backend install && yarn --cwd admin install && yarn --cwd extension install && yarn --cwd extension-app install",
+    "changeUri": "node scripts/changeUri "
   },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "fs": "^0.0.1-security",
+    "concurrently": "^5.1.0",
+    "path": "^0.12.7"
   },
   "prettier": {
     "singleQuote": true,
