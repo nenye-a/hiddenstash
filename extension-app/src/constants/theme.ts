@@ -19,7 +19,7 @@ let customTheme = {
       },
       medium: {
         name: 'Avenir-Medium',
-        weight: '600' as '600',
+        weight: '500' as '500',
         source: AvenirMedium,
         size: 15,
       },
