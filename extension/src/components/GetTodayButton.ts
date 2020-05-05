@@ -28,7 +28,7 @@ export default function renderGetTodayButton(props: Props) {
           'justify-content': 'center',
         }),
   });
-  let textNode = document.createTextNode('Get Today');
+  let textNode = document.createTextNode('See Options');
 
   textContainer.appendChild(textNode);
 
