@@ -9,7 +9,7 @@ type Params = { token: string };
 export default function AuthScene() {
   let params = useParams<Params>();
   let hasToken = window.localStorage.getItem(TOKEN);
-  if (params.token) {
+  if (params?.token) {
     window.localStorage.setItem(TOKEN, params.token);
     return <Redirect to="/" />;
   } else if (hasToken) {
