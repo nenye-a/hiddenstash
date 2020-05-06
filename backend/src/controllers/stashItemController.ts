@@ -52,7 +52,7 @@ export let addStashItemController = async (req: Request, res: Response) => {
       return;
     }
     let requestBody: RequestBodyStashItem = req.body;
-    if (!requestBody.name || !requestBody.price || !requestBody.source) {
+    if (!requestBody.name || !requestBody.source) {
       res.status(SERVER_BAD_REQUEST).json({
         ...BAD_REQUEST,
       });
@@ -61,14 +61,13 @@ export let addStashItemController = async (req: Request, res: Response) => {
     let payloadToken = jwt.verify(String(requestToken), API_SECRET);
     let productRecommendation = await productLookup({
       name: requestBody.name,
-      price: requestBody.price,
       source: requestBody.source,
     });
 
     let stashItem = await prisma.stashItem.create({
       data: {
         name: requestBody.name,
-        price: '$' + requestBody.price.toString(),
+        price: requestBody.price ? '$' + requestBody.price.toString() : '',
         token: payloadToken.toString(),
         result: {
           create: productRecommendation,

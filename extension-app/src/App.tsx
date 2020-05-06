@@ -10,12 +10,13 @@ import {
 import MainRoute from './routes/MainRoute';
 import customTheme from './constants/theme';
 import { API_URL } from './constants/uri';
+import { TOKEN } from './constants/storeKeys';
 
 const requestHostInterceptor = (host: string) => (_client: Client) => async (
   action: Action,
 ) => {
   // TODO: add helper
-  let token = window.localStorage.getItem('hiddenstash-token');
+  let token = window.localStorage.getItem(TOKEN);
   return {
     ...action,
     endpoint: `${host}${action.endpoint}`,
