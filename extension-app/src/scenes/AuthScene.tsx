@@ -10,7 +10,10 @@ export default function AuthScene() {
   let params = useParams<Params>();
   let hasToken = window.localStorage.getItem(TOKEN);
   if (params?.token) {
-    window.localStorage.setItem(TOKEN, params.token);
+    // decode token param
+    let regexPlus = /[+]/g;
+    let token = params.token.replace(regexPlus, '.');
+    window.localStorage.setItem(TOKEN, token);
     return <Redirect to="/" />;
   } else if (hasToken) {
     return <Redirect to="/" />;

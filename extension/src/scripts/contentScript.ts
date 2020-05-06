@@ -33,7 +33,13 @@ function main() {
           }
         });
       }
-      iframe.setAttribute('src', `${APP_URI}auth/${token}`);
+      // Here we replace all dots in token to be url safe
+      let regexDotSymbol = /[.]/gi;
+
+      iframe.setAttribute(
+        'src',
+        `${APP_URI}auth/${token.replace(regexDotSymbol, '+')}`,
+      );
     });
     Object.assign(iframe.style, {
       width: '410px',
@@ -79,7 +85,7 @@ function main() {
       }
     });
 
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    chrome.runtime.onMessage.addListener((request) => {
       if (request.action === 'addItem') {
         image.click();
       }

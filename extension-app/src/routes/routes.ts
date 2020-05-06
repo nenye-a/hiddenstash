@@ -17,5 +17,5 @@ export let MAIN_ROUTES: Array<RouteProps> = [
     component: Search,
   },
   { path: '/auth', component: AuthScene, exact: true },
-  { path: '/auth/:token', component: AuthScene },
+  { path: '/auth/:token', component: AuthScene, exact: true, strict: true },
 ];
