@@ -1,6 +1,16 @@
 import renderGetTodayButton from '../components/GetTodayButton';
-import insertNodeAfterExistingElement from '../helpers/insertNodeAfterExistingElement';
+import {
+  addToStash,
+  getPriceNumber,
+  insertNodeAfterExistingElement,
+} from '../helpers';
 
+type AddItemParam = {
+  name?: string | null;
+  price?: string | null;
+  source?: string | null;
+  imgUrl?: string | null;
+};
 let addToCartButtonContainer = document.querySelector(
   '#addToCart_feature_div>.a-button-stack',
 );
@@ -9,6 +19,15 @@ let searchResultContainer = document.querySelectorAll(
 );
 let dealContainer = document.querySelectorAll('div.dealContainer.dealTile');
 
+let addItemToStash = (param: AddItemParam) => {
+  let { name, price, source, imgUrl } = param;
+  addToStash({
+    name: name || undefined,
+    price: price ? getPriceNumber(price) : undefined,
+    source: `https://amazon.com${source}` || undefined,
+    imgUrl: imgUrl || undefined,
+  });
+};
 if (dealContainer.length > 0) {
   dealContainer.forEach((item) => {
     let stackButtonContainer = item.querySelector('.a-row.stackToBottom');
@@ -20,8 +39,12 @@ if (dealContainer.length > 0) {
     let button = renderGetTodayButton({
       style: { 'margin-bottom': '10px' },
       onClick: () => {
-        // eslint-disable-next-line no-console
-        console.log(productName, price, source, productImage);
+        addItemToStash({
+          name: productName,
+          price,
+          source,
+          imgUrl: productImage,
+        });
       },
     });
 
@@ -39,8 +62,12 @@ if (searchResultContainer.length > 0) {
       mode: 'small',
       style: { 'margin-top': '5px' },
       onClick: () => {
-        // eslint-disable-next-line no-console
-        console.log(productName, price, source, productImage);
+        addItemToStash({
+          name: productName,
+          price,
+          source,
+          imgUrl: productImage,
+        });
       },
     });
 
@@ -59,8 +86,12 @@ if (addToCartButtonContainer) {
   let button = renderGetTodayButton({
     style: { 'margin-bottom': '10px' },
     onClick: () => {
-      // eslint-disable-next-line no-console
-      console.log(productName, price, productImage, source);
+      addItemToStash({
+        name: productName,
+        price,
+        source,
+        imgUrl: productImage,
+      });
     },
   });
 

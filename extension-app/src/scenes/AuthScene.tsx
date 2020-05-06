@@ -1,21 +1,19 @@
 import React from 'react';
-import { ActivityIndicator } from 'exoflex';
-import { Redirect } from 'react-router-dom';
-import { useQuery } from 'react-fetching-library';
+import { Redirect, useParams } from 'react-router-dom';
 
-import { GetToken } from '../types/types';
 import ErrorComponent from '../components/ErrorComponent';
+import { TOKEN } from '../constants/storeKeys';
+
+type Params = { token: string };
 
 export default function AuthScene() {
-  let { loading, payload, query } = useQuery<GetToken>({
-    endpoint: '/getToken',
-    method: 'GET',
-  });
-  if (loading) {
-    return <ActivityIndicator />;
-  } else if (payload) {
-    window.localStorage.setItem('hiddenstash-token', payload.token);
+  let params = useParams<Params>();
+  let hasToken = window.localStorage.getItem(TOKEN);
+  if (params.token) {
+    window.localStorage.setItem(TOKEN, params.token);
+    return <Redirect to="/" />;
+  } else if (hasToken) {
     return <Redirect to="/" />;
   }
-  return <ErrorComponent onRetry={query} />;
+  return <ErrorComponent />;
 }

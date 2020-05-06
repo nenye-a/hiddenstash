@@ -1,4 +1,4 @@
-import { APP_URI } from '../constants/uri';
+import { APP_URI, API_URI } from '../constants/uri';
 
 if (
   document.readyState === 'interactive' ||
@@ -11,7 +11,6 @@ if (
 
 function main() {
   let isCartOpen = false;
-
   let body = document.querySelector('body');
   if (body) {
     let hiddenstashLogo = chrome.runtime.getURL('hiddenstash-icon.png');
@@ -19,7 +18,23 @@ function main() {
     iframe.setAttribute('id', 'hiddenstash-app');
     iframe.setAttribute('class', 'hiddenstash-app');
     iframe.setAttribute('frameBorder', '0');
-    iframe.setAttribute('src', APP_URI);
+
+    chrome.storage.local.get('hiddenstashToken', async (result) => {
+      let token = '';
+      if (result.hiddenstashToken) {
+        token = result.hiddenstashToken;
+      } else {
+        let response = await fetch(`${API_URI}/getToken`);
+        let data = response.json();
+        data.then((result) => {
+          if (result.token) {
+            token = result.token;
+            chrome.storage.local.set({ hiddenstashToken: token });
+          }
+        });
+      }
+      iframe.setAttribute('src', `${APP_URI}auth/${token}`);
+    });
     Object.assign(iframe.style, {
       width: '410px',
       height: '470px',
