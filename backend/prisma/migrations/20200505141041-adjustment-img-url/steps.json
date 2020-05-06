@@ -8,7 +8,7 @@
         "source": "db"
       },
       "argument": "provider",
-      "newValue": "\"postgresql\""
+      "newValue": "\"sqlite\""
     },
     {
       "tag": "UpdateArgument",
