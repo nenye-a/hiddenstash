@@ -34,11 +34,11 @@ function main() {
         });
       }
       // Here we replace all dots in token to be url safe
-      let regexComaSymbol = /[.]/gi;
+      let regexDotSymbol = /[.]/gi;
 
       iframe.setAttribute(
         'src',
-        `${APP_URI}auth/${token.replace(regexComaSymbol, '+')}`,
+        `${APP_URI}auth/${token.replace(regexDotSymbol, '+')}`,
       );
     });
     Object.assign(iframe.style, {
@@ -85,7 +85,7 @@ function main() {
       }
     });
 
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    chrome.runtime.onMessage.addListener((request) => {
       if (request.action === 'addItem') {
         image.click();
       }
