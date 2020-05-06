@@ -24,7 +24,7 @@ export default async function addToStash(params: AddStashParam) {
         }
       });
     }
-    fetch(`${API_URI}/stashItem/add`, {
+    await fetch(`${API_URI}/stashItem/add`, {
       headers: {
         'Content-Type': 'application/json',
         'x-auth-token': token,
@@ -37,6 +37,6 @@ export default async function addToStash(params: AddStashParam) {
       }),
       method: 'POST',
     });
+    chrome.runtime.sendMessage({ message: 'addItem' }, () => {});
   });
-  // TODO: open iframe on success
 }
