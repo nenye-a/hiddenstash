@@ -33,7 +33,13 @@ function main() {
           }
         });
       }
-      iframe.setAttribute('src', `${APP_URI}auth/${token}`);
+      // Here we replace all dots in token to be url safe
+      let regexComaSymbol = /[.]/gi;
+
+      iframe.setAttribute(
+        'src',
+        `${APP_URI}auth/${token.replace(regexComaSymbol, '+')}`,
+      );
     });
     Object.assign(iframe.style, {
       width: '410px',
