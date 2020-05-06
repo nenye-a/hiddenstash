@@ -1,2 +1,2 @@
-export const APP_URI =
-  'https://5eaafe2c6ee0cd77d4dac801--hiddenstash-extension-app.netlify.app/';
+export const APP_URI = 'https://localhost:19006/';
+export const API_URI = 'http://localhost:3000/api';

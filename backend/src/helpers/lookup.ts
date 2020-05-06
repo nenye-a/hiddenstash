@@ -4,7 +4,6 @@ import parse, { HTMLElement } from 'node-html-parser';
 type SearchQuery = {
   name: string;
   source: string;
-  price: number;
 };
 
 type Result = {
@@ -13,6 +12,7 @@ type Result = {
   price: string;
   amount: string;
   url: string;
+  imgUrl?: string;
 };
 
 type ParseResult = HTMLElement & {
