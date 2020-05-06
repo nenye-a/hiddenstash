@@ -10,6 +10,7 @@ module.exports = {
       __dirname,
       srcDir + 'amazonContentScript.ts',
     ),
+    background: path.join(__dirname, srcDir + 'background.ts'),
   },
   output: {
     path: path.join(__dirname, '../dist/js'),

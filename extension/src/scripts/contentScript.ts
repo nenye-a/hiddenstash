@@ -78,5 +78,11 @@ function main() {
         isCartOpen = false;
       }
     });
+
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      if (request.action === 'addItem') {
+        image.click();
+      }
+    });
   }
 }

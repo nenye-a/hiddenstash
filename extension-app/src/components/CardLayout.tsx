@@ -19,16 +19,23 @@ type Props = {
 
 export default function CardLayout(props: Props) {
   let { detail, children, footer } = props;
+  let titleContainerStyle = detail
+    ? { minHeight: 55, padding: 15 }
+    : { height: 37, paddingHorizontal: 8 };
+  let iconStyle = detail
+    ? { height: 28, width: 30 }
+    : { height: 20, width: 22 };
+  let titleStyle = detail ? { fontSize: 20 } : undefined;
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
+      <View style={[styles.titleContainer, titleContainerStyle]}>
         <View style={styles.titleRow}>
           <Image
             source={hiddenStashIcon}
             resizeMode="contain"
-            style={styles.icon}
+            style={[styles.icon, iconStyle]}
           />
-          <Text weight="bold" style={styles.titleText}>
+          <Text weight="bold" style={[styles.titleText, titleStyle]}>
             Hiddenstash
           </Text>
         </View>
@@ -65,11 +72,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleContainer: {
-    minHeight: 55,
     backgroundColor: THEME_COLOR,
-    padding: 15,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   titleRow: {
     marginVertical: 5,
@@ -87,7 +91,6 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: WHITE,
-    fontSize: 20,
   },
   footer: {
     backgroundColor: FOOTER_COLOR,
