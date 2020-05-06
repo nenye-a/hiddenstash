@@ -33,7 +33,7 @@ fs.readFile(
       console.log(err);
     }
 
-    let deploymentUri = `export const APP_URI = 'https://5eaafe2c6ee0cd77d4dac801--hiddenstash-extension-app.netlify.app/';\nexport const API_URI = 'https://hiddenstash-backend.herokuapp.com/api';\n`;
+    let deploymentUri = `export const APP_URI = 'https://hiddenstash-extension-app.netlify.app/';\nexport const API_URI = 'https://hiddenstash-backend.herokuapp.com/api';\n`;
 
     fs.writeFile(
       path.join(__dirname, '../extension/src/constants/uri.ts'),
