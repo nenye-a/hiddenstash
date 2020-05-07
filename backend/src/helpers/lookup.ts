@@ -21,7 +21,7 @@ type ParseResult = HTMLElement & {
 };
 
 export async function productLookup(query: SearchQuery) {
-  let { name, source } = query;
+  let { name, source, price } = query;
   let search = name.replace(' ', '+');
   let shopping_tag = '&sxsrf=ALeKk02aluvgSzdsFIRVsfqe30HYpca6Yw:1588732498018&source=lnms&tbm=shop&sa=X&ved=2ahUKEwjAtL_hmZ7pAhUnknIEHd75CJUQ_AUoAXoECAwQAw&biw=1440&bih=745';
   let result = await axios.get('https://www.google.com/search?q=' + search + shopping_tag, {
@@ -35,7 +35,7 @@ export async function productLookup(query: SearchQuery) {
   let root = parse(result.data) as ParseResult;
 
   let googleResult = parseGoogleResults(root);
-  let filteredResults = filterResults(source, googleResult);
+  let filteredResults = filterResults(source, price, googleResult);
   return filteredResults;
 }
 
@@ -55,20 +55,23 @@ function parseGoogleResults(htmlBody: ParseResult) {
   let name_tag = '.A2sOrd'; // '.LC20lb.DKV0Md'
   let amount_tag = '.Nr22bf'; //'.dhIWPd.f'
   let url_tag = '.a3H7pd.r29r0b.shntl'; // 'a'
+  let img_tag = "img"
+
   results.forEach((result: HTMLElement) => {
     let name = result?.querySelector(name_tag)?.rawText || '';
     let url = 'https://www.google.com' + result?.querySelector(url_tag).getAttribute('href') || '';
-    let description = result?.querySelector(url_tag)?.rawText || '';//result?.querySelector('.st')?.rawText || '';
+    let description = result?.querySelector(url_tag)?.rawText || '';
     let amount = result.querySelector(amount_tag)?.rawText || '';
     let price = getPriceFromText(amount);
-    console.log(name + ' ' + url + ' ' + description + ' ' + amount + ' ' + price)
-    console.log(getTrueUrl(url))
+    let imgUrl = result?.querySelector(img_tag).getAttribute('src') || '';
+    //console.log(name + ' ' + url + ' ' + description + ' ' + amount + ' ' + price + ' ' + imgUrl)
     sites.push({
       name,
-      url,
       description,
-      amount,
+      url,
       price,
+      amount,
+      imgUrl,
     });
   });
 
@@ -81,20 +84,25 @@ function parseGoogleResults(htmlBody: ParseResult) {
  * to return items are not available from the source site
  *
  */
-function filterResults(source: string, results: Array<Result>) {
+function filterResults(source: string, price: number, results: Array<Result>) {
   let sourceDomain = getDomain(source);
   let filteredResults = [];
   //TODO: decide if we want unique domain results only
   for (let result of results) {
     //remove results that are from the same domain
-    let linkDomain = getDomain(result.url);
+    //let linkDomain = getDomain(result.url);
 
     // if (linkDomain !== sourceDomain) {
     //   filteredResults.push(result);
     // }
-    filteredResults.push(result);
-    //TODO: search sites and find missing prices, remove non-priced items from search results
+
+    // only show cheaper items
+    if (parseFloat(result.price) < price) {
+      filteredResults.push(result);
+    }
   }
+  // sort by price
+  filteredResults.sort((a, b) => (parseFloat(a.price) > parseFloat(b.price)) ? 1 : -1)
   return filteredResults;
 }
 
