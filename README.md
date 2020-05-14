@@ -19,3 +19,10 @@ If you do not already have it, you may want to add this script to your `.vscode/
   "eslint.workingDirectories": ["./backend", "./admin"]
 }
 ```
+
+### Branches
+- **master** latest development pushed branch
+- **staging** lastest staged development changes for testing
+- **production** latest deployed branch.
+
+Automatic deployment of the backend to heroku completed for production. Automatic deployment of front end to netlify still pending.
